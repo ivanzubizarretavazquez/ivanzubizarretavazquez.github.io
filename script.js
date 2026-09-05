@@ -223,4 +223,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setupScanBar();
   setupReveals();
+  setupNetworkBackground();
 });
+
+function setupNetworkBackground() {
+  // Fase 1: universo 3D ambiental. Si Three.js no cargó (bloqueado, sin
+  // red, navegador sin WebGL) la web sigue funcionando exactamente igual
+  // que antes: el canvas queda vacío y transparente.
+  const canvas = document.getElementById("networkCanvas");
+  if (!canvas) return;
+
+  if (typeof THREE === "undefined" || !window.NetworkBackground) {
+    canvas.style.display = "none";
+    return;
+  }
+
+  try {
+    const supportsWebGL = (() => {
+      try {
+        const testCanvas = document.createElement("canvas");
+        return Boolean(
+          window.WebGLRenderingContext &&
+            (testCanvas.getContext("webgl") ||
+              testCanvas.getContext("experimental-webgl"))
+        );
+      } catch (e) {
+        return false;
+      }
+    })();
+
+    if (!supportsWebGL) {
+      canvas.style.display = "none";
+      return;
+    }
+
+    window.NetworkBackground.init(canvas);
+  } catch (err) {
+    // Cualquier fallo del universo 3D nunca debe romper el portfolio.
+    canvas.style.display = "none";
+    console.warn("NetworkBackground no se pudo inicializar:", err);
+  }
+}
