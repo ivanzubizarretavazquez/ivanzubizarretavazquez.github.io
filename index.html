@@ -7,16 +7,18 @@
 <meta name="description" content="Portfolio profesional de Iván Zubizarreta, analista de ciberseguridad especializado en seguridad ofensiva y hacking ético.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="scan-bar" id="scanBar" aria-hidden="true"></div>
 
 <header class="site-header">
   <div class="wrap header-inner">
     <a href="#top" class="brand">IZ<span class="brand-dot">.</span></a>
     <nav class="main-nav">
-      <a href="#perfil" data-i18n="nav.profile">Perfil</a>
+      <a href="#servicios" data-i18n="nav.services">Qué hago</a>
       <a href="#experiencia" data-i18n="nav.experience">Experiencia</a>
       <a href="#formacion" data-i18n="nav.education">Formación</a>
       <a href="#proyectos" data-i18n="nav.projects">Proyectos</a>
@@ -33,49 +35,79 @@
 <main id="top">
 
   <section class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
     <div class="wrap hero-inner">
-      <div class="hero-copy">
-        <h1>Iván Zubizarreta</h1>
-        <p class="hero-role" data-i18n="hero.role">Analista de Ciberseguridad — Seguridad ofensiva y hacking ético</p>
-        <p class="hero-lede" data-i18n="hero.lede">Técnico de sistemas y ciberseguridad con una base formativa sólida y en constante ampliación, con dominio progresivo de sistemas, redes y seguridad tanto ofensiva como defensiva.</p>
-        <div class="hero-actions">
-          <a href="#proyectos" class="btn btn-primary" data-i18n="hero.cta_projects">Ver proyectos</a>
-          <a href="#contacto" class="btn btn-ghost" data-i18n="hero.cta_contact">Contactar</a>
+      <p class="hero-kicker" data-i18n="hero.kicker">Iván Zubizarreta · Analista de Ciberseguridad</p>
+      <h1 class="reveal-load" data-i18n="hero.headline">Seguridad ofensiva con mentalidad de sistemas.</h1>
+      <p class="hero-lede reveal-load" data-i18n="hero.lede">Reviso, ataco y refuerzo sistemas e infraestructuras antes de que lo haga otro. Formación progresiva en redes, sistemas y hacking ético, aplicada a problemas reales.</p>
+      <div class="hero-actions reveal-load">
+        <a href="#proyectos" class="btn btn-primary" data-i18n="hero.cta_projects">Ver proyectos</a>
+        <a href="#contacto" class="btn btn-ghost" data-i18n="hero.cta_contact">Hablemos</a>
+      </div>
+    </div>
+
+    <div class="stats-strip">
+      <div class="wrap stats-grid">
+        <div class="stat">
+          <div class="stat-num">1.700h</div>
+          <p data-i18n="stats.hours">Formación especializada en el máster</p>
+        </div>
+        <div class="stat">
+          <div class="stat-num">3</div>
+          <p data-i18n="stats.degrees">Titulaciones en sistemas y ciberseguridad</p>
+        </div>
+        <div class="stat">
+          <div class="stat-num">IoT</div>
+          <p data-i18n="stats.project">Proyecto real de control de acceso</p>
         </div>
       </div>
-
-      <aside class="status-panel" aria-label="Resumen">
-        <div class="status-row">
-          <span class="status-key" data-i18n="status.location_key">Ubicación</span>
-          <span class="status-val">Madrid, España</span>
-        </div>
-        <div class="status-row">
-          <span class="status-key" data-i18n="status.focus_key">Enfoque</span>
-          <span class="status-val">Pentesting · Seguridad ofensiva · Blue Team</span>
-        </div>
-        <div class="status-row">
-          <span class="status-key" data-i18n="status.languages_key">Idiomas</span>
-          <span class="status-val" data-i18n="status.languages_val">Español (nativo) · Inglés (B2)</span>
-        </div>
-        <div class="status-row">
-          <span class="status-key" data-i18n="status.availability_key">Disponibilidad</span>
-          <span class="status-val" data-i18n="status.availability_val">Abierto a nuevas oportunidades</span>
-        </div>
-      </aside>
     </div>
   </section>
 
-  <section id="perfil" class="section">
-    <div class="wrap section-narrow">
-      <h2 data-i18n="profile.title">Perfil</h2>
-      <p data-i18n="profile.body">Mi recorrido —del Grado Medio en Sistemas Microinformáticos y Redes (SMR) al Grado Superior en Administración de Sistemas Informáticos en Red (ASIR) y un Máster en Ciberseguridad, Hacking Ético y Seguridad Ofensiva— me ha dado un dominio progresivo de sistemas, redes y seguridad tanto ofensiva como defensiva. Cada titulación ha reforzado mi capacidad de análisis, mi autonomía técnica y una forma estructurada de resolver problemas. Aprendo rápido y disfruto aplicando lo aprendido para proteger sistemas e infraestructuras.</p>
+  <section id="servicios" class="section">
+    <div class="wrap">
+      <h2 class="reveal" data-i18n="services.title">Qué hago</h2>
+      <div class="service-grid reveal-group">
+        <article class="service-card">
+          <svg class="service-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 4L34 9V19C34 27.5 28 33.5 20 36C12 33.5 6 27.5 6 19V9L20 4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M14 20L18 24L26 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3 data-i18n="services.s1.title">Pentesting y hacking ético</h3>
+          <p data-i18n="services.s1.desc">Pruebas de intrusión controladas para encontrar los huecos antes que un atacante real.</p>
+        </article>
+        <article class="service-card">
+          <svg class="service-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="17" cy="17" r="10" stroke="currentColor" stroke-width="2"/>
+            <path d="M25 25L34 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <h3 data-i18n="services.s2.title">Seguridad ofensiva</h3>
+          <p data-i18n="services.s2.desc">Simulación de ataques reales para poner a prueba la resistencia de sistemas y redes.</p>
+        </article>
+        <article class="service-card">
+          <svg class="service-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="7" y="7" width="26" height="26" rx="3" stroke="currentColor" stroke-width="2"/>
+            <path d="M14 20H26M20 14V26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <h3 data-i18n="services.s3.title">Análisis de vulnerabilidades</h3>
+          <p data-i18n="services.s3.desc">Auditoría de sistemas y redes para detectar, priorizar y documentar riesgos.</p>
+        </article>
+        <article class="service-card">
+          <svg class="service-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 5V13M20 27V35M5 20H13M27 20H35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="20" cy="20" r="6" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          <h3 data-i18n="services.s4.title">Respuesta a incidentes</h3>
+          <p data-i18n="services.s4.desc">Detección, contención y análisis de incidentes desde una perspectiva de Blue Team.</p>
+        </article>
+      </div>
     </div>
   </section>
 
   <section id="experiencia" class="section section-alt">
     <div class="wrap">
-      <h2 data-i18n="experience.title">Experiencia</h2>
-      <ol class="timeline">
+      <h2 class="reveal" data-i18n="experience.title">Experiencia</h2>
+      <ol class="timeline reveal-group">
         <li class="timeline-item">
           <div class="timeline-when">2025 — <span data-i18n="dates.present">Actualidad</span></div>
           <div class="timeline-body">
@@ -106,8 +138,8 @@
 
   <section id="formacion" class="section">
     <div class="wrap">
-      <h2 data-i18n="education.title">Formación</h2>
-      <div class="edu-grid">
+      <h2 class="reveal" data-i18n="education.title">Formación</h2>
+      <div class="edu-grid reveal-group">
         <div class="edu-card">
           <div class="edu-year">2026</div>
           <h3 data-i18n="edu.master.title">Máster en Ciberseguridad, Hacking Ético y Seguridad Ofensiva</h3>
@@ -126,7 +158,7 @@
         </div>
       </div>
 
-      <div class="skills-block">
+      <div class="skills-block reveal">
         <h3 data-i18n="skills.technical_title">Aptitudes técnicas</h3>
         <ul class="tag-list">
           <li data-i18n="skills.t1">Hacking ético y pentesting</li>
@@ -149,8 +181,8 @@
 
   <section id="proyectos" class="section section-alt">
     <div class="wrap">
-      <h2 data-i18n="projects.title">Proyectos</h2>
-      <div class="project-grid">
+      <h2 class="reveal" data-i18n="projects.title">Proyectos</h2>
+      <div class="project-grid reveal-group">
         <article class="project-card">
           <div class="project-year">2024</div>
           <h3 data-i18n="proj1.title">Sistema de Control de Acceso</h3>
@@ -177,6 +209,14 @@
           <p data-i18n="proj_placeholder.desc">Espacio reservado. Sustituye este bloque por el nombre, la descripción y el enlace al repositorio de tu próximo proyecto.</p>
         </article>
       </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap cta-inner reveal">
+      <h2 data-i18n="cta.title">¿Hablamos de tu próximo proyecto?</h2>
+      <p data-i18n="cta.lede">Disponible para colaborar en pentesting, auditorías de seguridad o proyectos de sistemas.</p>
+      <a href="#contacto" class="btn btn-invert" data-i18n="cta.button">Contactar ahora</a>
     </div>
   </section>
 

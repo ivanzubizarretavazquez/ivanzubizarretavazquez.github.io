@@ -1,25 +1,30 @@
 const translations = {
   es: {
-    "nav.profile": "Perfil",
+    "nav.services": "Qué hago",
     "nav.experience": "Experiencia",
     "nav.education": "Formación",
     "nav.projects": "Proyectos",
     "nav.contact": "Contacto",
 
-    "hero.role": "Analista de Ciberseguridad — Seguridad ofensiva y hacking ético",
-    "hero.lede": "Técnico de sistemas y ciberseguridad con una base formativa sólida y en constante ampliación, con dominio progresivo de sistemas, redes y seguridad tanto ofensiva como defensiva.",
+    "hero.kicker": "Iván Zubizarreta · Analista de Ciberseguridad",
+    "hero.headline": "Seguridad ofensiva con mentalidad de sistemas.",
+    "hero.lede": "Reviso, ataco y refuerzo sistemas e infraestructuras antes de que lo haga otro. Formación progresiva en redes, sistemas y hacking ético, aplicada a problemas reales.",
     "hero.cta_projects": "Ver proyectos",
-    "hero.cta_contact": "Contactar",
+    "hero.cta_contact": "Hablemos",
 
-    "status.location_key": "Ubicación",
-    "status.focus_key": "Enfoque",
-    "status.languages_key": "Idiomas",
-    "status.languages_val": "Español (nativo) · Inglés (B2)",
-    "status.availability_key": "Disponibilidad",
-    "status.availability_val": "Abierto a nuevas oportunidades",
+    "stats.hours": "Formación especializada en el máster",
+    "stats.degrees": "Titulaciones en sistemas y ciberseguridad",
+    "stats.project": "Proyecto real de control de acceso",
 
-    "profile.title": "Perfil",
-    "profile.body": "Mi recorrido —del Grado Medio en Sistemas Microinformáticos y Redes (SMR) al Grado Superior en Administración de Sistemas Informáticos en Red (ASIR) y un Máster en Ciberseguridad, Hacking Ético y Seguridad Ofensiva— me ha dado un dominio progresivo de sistemas, redes y seguridad tanto ofensiva como defensiva. Cada titulación ha reforzado mi capacidad de análisis, mi autonomía técnica y una forma estructurada de resolver problemas. Aprendo rápido y disfruto aplicando lo aprendido para proteger sistemas e infraestructuras.",
+    "services.title": "Qué hago",
+    "services.s1.title": "Pentesting y hacking ético",
+    "services.s1.desc": "Pruebas de intrusión controladas para encontrar los huecos antes que un atacante real.",
+    "services.s2.title": "Seguridad ofensiva",
+    "services.s2.desc": "Simulación de ataques reales para poner a prueba la resistencia de sistemas y redes.",
+    "services.s3.title": "Análisis de vulnerabilidades",
+    "services.s3.desc": "Auditoría de sistemas y redes para detectar, priorizar y documentar riesgos.",
+    "services.s4.title": "Respuesta a incidentes",
+    "services.s4.desc": "Detección, contención y análisis de incidentes desde una perspectiva de Blue Team.",
 
     "experience.title": "Experiencia",
     "dates.present": "Actualidad",
@@ -60,31 +65,40 @@ const translations = {
     "proj_placeholder.title": "Próximo proyecto",
     "proj_placeholder.desc": "Espacio reservado. Sustituye este bloque por el nombre, la descripción y el enlace al repositorio de tu próximo proyecto.",
 
+    "cta.title": "¿Hablamos de tu próximo proyecto?",
+    "cta.lede": "Disponible para colaborar en pentesting, auditorías de seguridad o proyectos de sistemas.",
+    "cta.button": "Contactar ahora",
+
     "contact.title": "Contacto",
     "contact.lede": "¿Hablamos de una oportunidad o de un proyecto? Escríbeme por cualquiera de estos medios."
   },
 
   en: {
-    "nav.profile": "Profile",
+    "nav.services": "What I do",
     "nav.experience": "Experience",
     "nav.education": "Education",
     "nav.projects": "Projects",
     "nav.contact": "Contact",
 
-    "hero.role": "Cybersecurity Analyst — Offensive security and ethical hacking",
-    "hero.lede": "Systems and cybersecurity technician with a solid and continuously growing academic background, with a progressive command of systems, networks and both offensive and defensive security.",
+    "hero.kicker": "Iván Zubizarreta · Cybersecurity Analyst",
+    "hero.headline": "Offensive security with a systems mindset.",
+    "hero.lede": "I review, attack and harden systems and infrastructure before someone else does. Progressive training in networks, systems and ethical hacking, applied to real problems.",
     "hero.cta_projects": "View projects",
     "hero.cta_contact": "Get in touch",
 
-    "status.location_key": "Location",
-    "status.focus_key": "Focus",
-    "status.languages_key": "Languages",
-    "status.languages_val": "Spanish (native) · English (B2)",
-    "status.availability_key": "Availability",
-    "status.availability_val": "Open to new opportunities",
+    "stats.hours": "Specialized training in the master's program",
+    "stats.degrees": "Qualifications in systems & cybersecurity",
+    "stats.project": "Real-world access control project",
 
-    "profile.title": "Profile",
-    "profile.body": "My path —from an Intermediate Vocational Diploma in Microcomputer Systems and Networks (SMR) to a Higher Vocational Diploma in Network Systems Administration (ASIR) and a Master's in Cybersecurity, Ethical Hacking and Offensive Security— has given me a progressive command of systems, networks and both offensive and defensive security. Each qualification has strengthened my analytical thinking, technical autonomy and a structured approach to problem-solving. I learn fast and enjoy applying what I learn to protect systems and infrastructures.",
+    "services.title": "What I do",
+    "services.s1.title": "Pentesting & ethical hacking",
+    "services.s1.desc": "Controlled intrusion testing to find the gaps before a real attacker does.",
+    "services.s2.title": "Offensive security",
+    "services.s2.desc": "Simulating real attacks to stress-test systems and networks.",
+    "services.s3.title": "Vulnerability assessment",
+    "services.s3.desc": "Auditing systems and networks to detect, prioritize and document risk.",
+    "services.s4.title": "Incident response",
+    "services.s4.desc": "Detection, containment and analysis of incidents from a Blue Team perspective.",
 
     "experience.title": "Experience",
     "dates.present": "Present",
@@ -125,6 +139,10 @@ const translations = {
     "proj_placeholder.title": "Upcoming project",
     "proj_placeholder.desc": "Reserved space. Replace this block with the name, description and repository link of your next project.",
 
+    "cta.title": "Let's talk about your next project.",
+    "cta.lede": "Available to collaborate on pentesting, security audits or systems projects.",
+    "cta.button": "Get in touch",
+
     "contact.title": "Contact",
     "contact.lede": "Want to talk about an opportunity or a project? Reach me through any of these channels."
   }
@@ -148,6 +166,50 @@ function applyLanguage(lang) {
   localStorage.setItem("iz-portfolio-lang", lang);
 }
 
+function setupScanBar() {
+  const bar = document.getElementById("scanBar");
+  let ticking = false;
+
+  function update() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width = pct + "%";
+    ticking = false;
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  });
+
+  update();
+}
+
+function setupReveals() {
+  const targets = document.querySelectorAll(".reveal, .reveal-group");
+  if (!("IntersectionObserver" in window) || targets.length === 0) {
+    targets.forEach((el) => el.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  targets.forEach((el) => observer.observe(el));
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const stored = localStorage.getItem("iz-portfolio-lang");
   const initialLang = stored === "en" ? "en" : "es";
@@ -158,4 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const current = document.documentElement.getAttribute("lang") === "en" ? "en" : "es";
     applyLanguage(current === "es" ? "en" : "es");
   });
+
+  setupScanBar();
+  setupReveals();
 });
