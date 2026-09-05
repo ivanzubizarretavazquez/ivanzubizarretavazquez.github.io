@@ -175,6 +175,13 @@ function setupScanBar() {
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
     bar.style.width = pct + "%";
+
+    // Fase 2 — CameraController: el mismo progreso que llena la barra
+    // pilota el recorrido de la cámara por el universo 3D.
+    if (window.NetworkBackground && window.NetworkBackground.isActive()) {
+      window.NetworkBackground.setScrollProgress(pct / 100);
+    }
+
     ticking = false;
   }
 
