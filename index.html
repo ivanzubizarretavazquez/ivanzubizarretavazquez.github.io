@@ -1,11 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Iván Zubizarreta — Security is a living system</title>
-<meta name="description" content="An immersive journey through a digital system: network, threat, attack, defense, human, future. Cybersecurity portfolio of Iván Zubizarreta." />
+
+<title>Iván Zubizarreta — Analista de ciberseguridad | Seguridad ofensiva y hacking ético</title>
+<meta name="description" content="Analista de ciberseguridad en Madrid. Máster en dirección de ciberseguridad, hacking ético y seguridad ofensiva. Herramientas propias de integridad de la prueba y reconocimiento, formación y experiencia." />
+<link rel="canonical" href="https://ivanzubizarretavazquez.github.io/" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="author" content="Iván Zubizarreta" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Iván Zubizarreta" />
+<meta property="og:locale" content="es_ES" />
+<meta property="og:locale:alternate" content="en_US" />
+<meta property="og:url" content="https://ivanzubizarretavazquez.github.io/" />
+<meta property="og:title" content="Iván Zubizarreta — Analista de ciberseguridad" />
+<meta property="og:description" content="La seguridad no es un muro. Es un sistema vivo. Un recorrido por una red digital: la amenaza, el ataque, la defensa y las personas." />
+<meta property="og:image" content="https://ivanzubizarretavazquez.github.io/assets/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="La seguridad no es un muro. Es un sistema vivo. — Iván Zubizarreta, analista de ciberseguridad." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Iván Zubizarreta — Analista de ciberseguridad" />
+<meta name="twitter:description" content="La seguridad no es un muro. Es un sistema vivo." />
+<meta name="twitter:image" content="https://ivanzubizarretavazquez.github.io/assets/og-image.png" />
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 <meta name="theme-color" content="#ffffff" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Iván Zubizarreta",
+  "alternateName": "Iván Alfonso Zubizarreta Vázquez",
+  "jobTitle": "Analista de ciberseguridad",
+  "description": "Analista de ciberseguridad especializado en seguridad ofensiva y hacking ético.",
+  "url": "https://ivanzubizarretavazquez.github.io/",
+  "image": "https://ivanzubizarretavazquez.github.io/assets/og-image.png",
+  "address": { "@type": "PostalAddress", "addressLocality": "Madrid", "addressCountry": "ES" },
+  "alumniOf": [
+    { "@type": "EducationalOrganization", "name": "EIP International Business School" },
+    { "@type": "EducationalOrganization", "name": "CEAC FP" },
+    { "@type": "EducationalOrganization", "name": "IES Palomeras Vallecas" }
+  ],
+  "hasCredential": {
+    "@type": "EducationalOccupationalCredential",
+    "name": "Máster Profesional en Dirección de Ciberseguridad, Hacking Ético y Seguridad Ofensiva",
+    "credentialCategory": "Máster profesional",
+    "recognizedBy": { "@type": "EducationalOrganization", "name": "EIP International Business School" },
+    "dateCreated": "2026-06-03"
+  },
+  "knowsAbout": ["Ciberseguridad", "Hacking ético", "Seguridad ofensiva", "Pentesting", "Respuesta a incidentes", "OSINT", "Administración de sistemas", "Redes"],
+  "knowsLanguage": ["es", "en"],
+  "sameAs": [
+    "https://www.linkedin.com/in/i-zubizarreta",
+    "https://github.com/ivanzubizarretavazquez"
+  ]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
@@ -47,7 +104,7 @@ a{color:inherit}
 ::selection{background:rgba(22,119,255,.16)}
 
 /* Scroll track: the document height IS the timeline */
-#track{height:760vh; position:relative; z-index:0; pointer-events:none}
+#track{height:520vh; position:relative; z-index:0; pointer-events:none}
 
 /* ============================================================
    STAGE
@@ -83,16 +140,23 @@ a{color:inherit}
 .beat{
   position:absolute; opacity:0; will-change:opacity, transform;
   max-width:min(1040px, 84vw);
-  text-align:center;
+  text-align:center; isolation:isolate;
+}
+/* a soft field of white clears the particles behind the words */
+.beat::before{
+  content:''; position:absolute; inset:-60% -22%; z-index:-1; pointer-events:none;
+  background:radial-gradient(58% 58% at 50% 50%, rgba(255,255,255,.96) 0%, rgba(255,255,255,.86) 42%, rgba(255,255,255,0) 76%);
 }
 .beat h1,.beat h2{
   margin:0;
-  font-weight:200;
+  text-shadow:0 0 24px #fff, 0 0 64px #fff;
+  font-weight:300;
   letter-spacing:-.035em;
   line-height:.98;
   font-size:clamp(30px, 6.4vw, 92px);
 }
 .beat .sub{
+  text-shadow:0 0 18px #fff, 0 0 40px #fff;
   margin-top:clamp(12px,1.6vw,22px);
   font-size:clamp(12px,1.15vw,17px);
   font-weight:300;
@@ -100,7 +164,7 @@ a{color:inherit}
   color:var(--muted);
 }
 .beat .kicker{
-  display:block;
+  display:block; text-shadow:0 0 16px #fff;
   font-size:clamp(10px,.82vw,12px);
   font-weight:500;
   letter-spacing:.34em;
@@ -114,7 +178,7 @@ a{color:inherit}
 }
 .beat .terms span{
   font-size:clamp(11px,1vw,14px); font-weight:300; letter-spacing:.22em;
-  color:var(--muted);
+  color:rgba(7,17,31,.62); text-shadow:0 0 16px #fff;
 }
 .beat .terms span:nth-child(4){color:var(--electric)}
 
@@ -301,7 +365,7 @@ body.landed #nav,body.landed #hud,body.landed #identity,body.landed #lens,body.l
 /* ---- dossier: the readable layer you land on after the journey ---- */
 .dsr-head{border-bottom:1px solid var(--hair); padding-bottom:clamp(28px,5vh,52px)}
 .dsr-head .eyebrow{font-size:10px; letter-spacing:.34em; color:var(--electric)}
-.dsr-head h2{
+.dsr-head h1{
   margin:clamp(18px,3vh,30px) 0 0; font-weight:200; letter-spacing:-.04em;
   font-size:clamp(34px,7vw,84px); line-height:.96; max-width:16ch;
 }
@@ -348,6 +412,9 @@ body.landed #nav,body.landed #hud,body.landed #identity,body.landed #lens,body.l
 .chips span{font-size:12px; letter-spacing:.04em; color:rgba(7,17,31,.7); border:1px solid var(--hair); border-radius:999px; padding:9px 15px}
 .chips span.key{border-color:rgba(22,119,255,.4); color:var(--deep)}
 .cols{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:clamp(24px,4vw,52px)}
+.cvrow{display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-top:26px}
+.cvnote{font-size:12.5px; color:var(--muted); width:100%}
+.cvrow .action{font-size:11px; letter-spacing:.18em; padding:13px 22px}
 .cols h5{margin:0 0 16px; font-size:11px; letter-spacing:.2em; color:var(--muted); font-weight:400}
 
 .work{display:grid; grid-template-columns:132px 1fr; gap:clamp(14px,3vw,40px); padding:30px 0; border-top:1px solid var(--hair)}
@@ -474,7 +541,9 @@ body.landed #nav,body.landed #hud,body.landed #identity,body.landed #lens,body.l
 <div id="track"></div>
 
 <!-- ================= READABLE / FALLBACK ================= -->
-<div id="fallback"><div class="fb-wrap" id="readable"></div></div>
+<div id="fallback"><div class="fb-wrap" id="readable">
+<header class="dsr-head"><div class="eyebrow">Quien ha construido esto</div><h1>Iván Zubizarreta</h1><p class="lede">Analista de ciberseguridad — seguridad ofensiva y hacking ético</p><p class="lede">Técnico de sistemas y ciberseguridad, formado desde la base: sistemas microinformáticos y redes, después administración de sistemas informáticos en red, y un máster en dirección de ciberseguridad, hacking ético y seguridad ofensiva. Construyo las herramientas que yo querría usar —evidencias firmadas, mínimo privilegio, agentes auditables— y me interesa especialmente la parte del trabajo que empieza cuando salta la alerta.</p><div class="quick"><span>Madrid, España</span><a href="#" data-p="mail">Escríbeme</a><a href="#" data-p="tel">Llámame</a><a href="https://www.linkedin.com/in/i-zubizarreta" target="_blank" rel="noopener">LinkedIn</a></div></header><section class="sec"><div class="sec-h"><b>07</b><h3>Trabajo seleccionado</h3></div><p class="lede" style="margin:-18px 0 34px">Herramientas que he construido y uso. Ambas corren en entornos privados, así que aquí está lo que hacen, no cómo están hechas.</p><article class="work"><div class="no">01</div><div><h4>Custodia</h4><p class="tag">Integridad de la prueba en investigaciones</p><p>Herramienta de trabajo para investigaciones OSINT. Mantiene cada prueba unida a su fuente, detecta si algo se ha alterado después, y sostiene una línea estricta entre lo observado y lo inferido: un expediente afirma lo que puede demostrar y nada más.</p><div class="foot"><span class="st">Investigación OSINT · Integridad de la prueba · Observado vs inferido</span><span class="st">Privado — uso interno</span></div></div></article><article class="work"><div class="no">02</div><div><h4>Aegis</h4><p class="tag">Reconocimiento e inteligencia de amenazas</p><p>Plataforma multiempresa para descubrimiento de superficie de ataque: enumeración de subdominios, detección de DNS wildcard e histórico de escaneos por dominio, presentado como una sala de mapas donde cada activo es un nodo sobre el que actuar, no una fila de una tabla.</p><div class="foot"><span class="st">Laravel · Multiempresa · Descubrimiento de subdominios · Sala de mapas</span><span class="st">Despliegue privado</span></div></div></article></section><section class="sec"><div class="sec-h"><b>08</b><h3>Titulaciones</h3></div><article class="cred"><div class="top"><div class="inst">EIP INTERNATIONAL BUSINESS SCHOOL</div><div class="state"><i></i>FINALIZADO · JUNIO 2026</div></div><h4>Máster Profesional en Dirección de Ciberseguridad, Hacking Ético y Seguridad Ofensiva</h4><div class="fields"><div>Carga lectiva &nbsp;<em>1.700 horas</em></div><div>Créditos &nbsp;<em>68 ECTS</em></div><div>Finalizado &nbsp;<em>3 de junio de 2026</em></div><div>Nº de registro &nbsp;<em>MDCHESO/EIP_2026_533</em></div></div><details><summary>Contenido del programa</summary><div class="mods"><div><h5>Seguridad ofensiva</h5><ul><li>Hacking ético</li><li>Criptología</li><li>Seguridad ofensiva</li><li>Ciberinteligencia y ciberamenazas</li><li>Investigación en deep web y dark web</li><li>Pruebas de seguridad avanzadas (incl. OT/IoT)</li></ul></div><div><h5>Seguridad defensiva</h5><ul><li>Arquitectura de ciberseguridad</li><li>Ciberseguridad y tecnologías disruptivas</li><li>Estrategia de ciberseguridad</li><li>Gestión de crisis y ciberresiliencia</li><li>Gestión de riesgos</li><li>Equipos de respuesta ante ciberincidentes (Blue Team)</li><li>Gobierno y gestión de seguridad TI</li><li>Normativa y legislación</li><li>Seguridad en desarrollo software</li><li>Identificación, prevención, protección, respuesta y recuperación</li></ul></div><div><h5>Transversal</h5><ul><li>Estrategia de marca personal en ciberseguridad</li><li>Habilidades directivas</li><li>Preparación para certificación internacional de inglés</li><li>Proyecto fin de máster</li></ul></div></div></details></article><article class="cred"><div class="top"><div class="inst">CEAC FP</div><div class="state"><i></i>EN CURSO · DESDE 2025</div></div><h4>Grado Superior en Administración de Sistemas Informáticos en Red (ASIR)</h4><div class="fields"><div>Nivel &nbsp;<em>FP de grado superior · MECES 1</em></div><div>Enfoque &nbsp;<em>Servidores, redes, virtualización</em></div></div></article><article class="cred"><div class="top"><div class="inst">IES PALOMERAS VALLECAS</div><div class="state"><i></i>FINALIZADO · 2024</div></div><h4>Grado Medio en Sistemas Microinformáticos y Redes (SMR)</h4><div class="fields"><div>Periodo &nbsp;<em>2022 — 2024</em></div><div>Enfoque &nbsp;<em>Sistemas, hardware, redes</em></div></div></article><p class="lede" style="font-size:12.5px;margin-top:22px">Certificados y números de registro disponibles a petición, verificables directamente con cada centro.</p></section><section class="sec"><div class="sec-h"><b>09</b><h3>Experiencia</h3></div><article class="entry"><div class="when">2025 — Actualidad</div><div><h4>Responsable de caja</h4><p class="org">Corral de la Morería, Madrid</p><p>Gestión de la caja y control de las operaciones diarias —arqueos, cuadre y cierre— garantizando la exactitud financiera en uno de los tablaos flamencos más reconocidos internacionalmente. Ahí aprendí que un proceso vale lo que vale su peor noche.</p></div></article><article class="entry"><div class="when">2024 — 2025</div><div><h4>Encargado de establecimiento</h4><p class="org">Restauración</p><p>Supervisión y coordinación de la operativa diaria: gestión y formación del equipo, planificación de turnos, control de stock y pedidos, apertura y cierre, y calidad del servicio. Responsabilidad sobre personas y sobre números a la vez.</p></div></article><article class="entry"><div class="when">2024</div><div><h4>Sistema de control de acceso</h4><p class="org">Kubernesys</p><p>Diseño e implementación de un sistema de control de acceso: el dispositivo físico y la aplicación web de gestión, con la seguridad y la conectividad remota como restricciones de diseño.</p></div></article></section><section class="sec"><div class="sec-h"><b>10</b><h3>Capacidades</h3></div><div class="cols"><div><h5>Seguridad</h5><div class="chips"><span class="key">Hacking ético y pentesting</span><span class="key">Seguridad ofensiva</span><span>Análisis de vulnerabilidades</span><span>Respuesta a incidentes (Blue Team)</span><span>Ciberinteligencia y OSINT</span><span>Desarrollo seguro</span></div></div><div><h5>Sistemas y redes</h5><div class="chips"><span>Linux</span><span>Windows</span><span>Administración de sistemas</span><span>Redes</span><span>VPS · Nginx · pm2</span><span>Cloudflare · certbot</span></div></div><div><h5>Ingeniería</h5><div class="chips"><span>TypeScript</span><span>Node.js</span><span>Next.js / React</span><span>Laravel / PHP</span><span>Python</span><span>MySQL / SQLite</span><span>Applied cryptography</span><span>Strong authentication</span></div></div><div><h5>Con personas</h5><div class="chips"><span>Liderazgo de equipos</span><span>Gestión de operaciones</span><span>Aprendizaje rápido</span><span>Español (nativo)</span><span>Inglés (B2)</span></div></div></div></section><section class="sec"><div class="contact"><div><p class="big">Hablemos.</p><p class="lede" style="font-size:14px;margin-top:18px">Abierto a puestos de ciberseguridad y a construir herramientas para equipos que las necesiten.</p><div class="cvrow"><span class="cvnote">El CV completo, en los dos idiomas.</span><a class="action" href="CV/Ivan_Zubizarreta_CV.pdf" download>Descargar CV (español)</a><a class="action" href="CV/Ivan_Zubizarreta_CV_EN.pdf" download>Descargar CV (inglés)</a></div></div><div class="ways"><a href="#" data-p="mail">Escríbeme por correo</a><a href="#" data-p="tel">Llámame</a><a href="https://www.linkedin.com/in/i-zubizarreta" target="_blank" rel="noopener">linkedin.com/in/i-zubizarreta</a><a href="https://github.com/ivanzubizarretavazquez" target="_blank" rel="noopener">github.com/ivanzubizarretavazquez</a></div></div><div class="colophon"><span>Hecho con Three.js. Sin rastreadores ni cookies.</span><span>Madrid — 2026</span></div></section>
+</div></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -538,19 +607,11 @@ en: {
   ],
 
   projects: [
-    { idx: 'PROJECT 01', title: 'Portcullis', tag: 'MCP security gateway',
-      body: 'A gateway that sits between an AI agent and its MCP servers. It authorises every tool call, pins tool definitions so a silently rewritten tool — rug-pull, tool shadowing — is caught before it runs, enforces scope and writes an append-only audit trail.',
-      facts: ['TypeScript', 'MCP SDK', 'Per-tool authorisation', 'Rug-pull detection'],
-      status: 'Open source', link: 'https://github.com/ivanzubizarretavazquez' },
-    { idx: 'PROJECT 02', title: 'Stricture', tag: 'Least-privilege scanner for AI agents',
-      body: 'Scans MCP configurations entirely in the browser — the config never leaves the machine — maps which agent reaches which tools, flags over-permissioned connections, filesystem roots, unpinned packages and plaintext secrets, and exports a signed audit report anyone can verify.',
-      facts: ['Next.js', 'Ed25519 signing', 'Client-side analysis', 'A–F grading'],
-      status: 'Open source', link: 'https://github.com/ivanzubizarretavazquez' },
-    { idx: 'PROJECT 03', title: 'Custodia', tag: 'Chain of custody for OSINT work',
-      body: 'Evidence notebook for investigations. Every item is sealed with its source, a SHA-256 fingerprint and an Ed25519 signature, and the tool keeps observed facts strictly separate from inferred ones. Access is private: mutual TLS with a non-exportable client certificate plus a passkey.',
-      facts: ['Next.js', 'mTLS + WebAuthn', 'Tamper detection', 'Observed vs inferred'],
-      status: 'Private deployment', link: '' },
-    { idx: 'PROJECT 04', title: 'Aegis', tag: 'Reconnaissance and cyber intelligence',
+    { idx: 'PROJECT 01', title: 'Custodia', tag: 'Evidence integrity for investigations',
+      body: 'A working tool for OSINT investigations. It keeps every piece of evidence tied to its source, detects if anything has been altered after the fact, and holds a strict line between what was observed and what was inferred — so a case file states what it can prove and nothing more.',
+      facts: ['OSINT investigations', 'Evidence integrity', 'Observed vs inferred'],
+      status: 'Private — internal use', link: '' },
+    { idx: 'PROJECT 02', title: 'Aegis', tag: 'Reconnaissance and cyber intelligence',
       body: 'Multi-tenant platform for attack-surface discovery: subdomain enumeration, wildcard DNS detection and per-domain scan history, presented as a map room where each asset is a node you can act on rather than a row in a table.',
       facts: ['Laravel', 'Multi-tenant', 'Subdomain discovery', 'Map room'],
       status: 'Private deployment', link: '' }
@@ -569,7 +630,7 @@ en: {
     ],
 
     workTitle: 'Selected work',
-    workLede: 'Four tools, all of them running. Security problems I hit myself and decided to solve properly.',
+    workLede: 'Tools I built and use. Both run in private environments, so what follows is what they do — not how they are built.',
 
     credsTitle: 'Qualifications',
     creds: [
@@ -618,10 +679,14 @@ en: {
     skillGroups: [
       { h: 'Security', chips: ['Ethical hacking & pentesting', 'Offensive security', 'Vulnerability assessment', 'Incident response (Blue Team)', 'Cyber intelligence & OSINT', 'Secure development'], key: 2 },
       { h: 'Systems & networks', chips: ['Linux', 'Windows', 'Systems administration', 'Networking', 'VPS · Nginx · pm2', 'Cloudflare · certbot'], key: 0 },
-      { h: 'Engineering', chips: ['TypeScript', 'Node.js', 'Next.js / React', 'Laravel / PHP', 'Python', 'MySQL / SQLite', 'Ed25519 · SHA-256', 'mTLS · WebAuthn'], key: 0 },
+      { h: 'Engineering', chips: ['TypeScript', 'Node.js', 'Next.js / React', 'Laravel / PHP', 'Python', 'MySQL / SQLite', 'Applied cryptography', 'Strong authentication'], key: 0 },
       { h: 'Working with people', chips: ['Team leadership', 'Operations management', 'Fast learner', 'Spanish (native)', 'English (B2)'], key: 0 }
     ],
 
+    cvTitle: 'Curriculum vitae',
+    cvNote: 'The full CV, in both languages.',
+    cvEs: 'Download CV (Spanish)',
+    cvEn: 'Download CV (English)',
     contactH: 'Let\'s talk.',
     contactNote: 'Open to cybersecurity roles and to building tools for teams who need them.',
     ways: [
@@ -688,19 +753,11 @@ es: {
   ],
 
   projects: [
-    { idx: 'PROYECTO 01', title: 'Portcullis', tag: 'Gateway de seguridad MCP',
-      body: 'Un gateway que se sitúa entre un agente de IA y sus servidores MCP. Autoriza cada llamada a herramienta, fija las definiciones para detectar una herramienta reescrita en silencio —rug-pull, tool shadowing— antes de que se ejecute, aplica el alcance permitido y escribe una auditoría solo de anexado.',
-      facts: ['TypeScript', 'SDK de MCP', 'Autorización por herramienta', 'Detección de rug-pull'],
-      status: 'Código abierto', link: 'https://github.com/ivanzubizarretavazquez' },
-    { idx: 'PROYECTO 02', title: 'Stricture', tag: 'Escáner de mínimo privilegio para agentes de IA',
-      body: 'Analiza configuraciones MCP enteramente en el navegador —la configuración nunca sale del equipo—, mapea qué agente alcanza qué herramientas, señala conexiones sobre-permisionadas, raíces del sistema de ficheros, paquetes sin fijar y secretos en texto plano, y exporta un informe de auditoría firmado y verificable.',
-      facts: ['Next.js', 'Firma Ed25519', 'Análisis en cliente', 'Nota A–F'],
-      status: 'Código abierto', link: 'https://github.com/ivanzubizarretavazquez' },
-    { idx: 'PROYECTO 03', title: 'Custodia', tag: 'Cadena de custodia para investigación OSINT',
-      body: 'Cuaderno de pruebas para investigaciones. Cada elemento se sella con su fuente, una huella SHA-256 y una firma Ed25519, y la herramienta mantiene separado de forma estricta lo observado de lo inferido. El acceso es privado: TLS mutuo con certificado de cliente no exportable más una passkey.',
-      facts: ['Next.js', 'mTLS + WebAuthn', 'Detección de manipulación', 'Observado vs inferido'],
-      status: 'Despliegue privado', link: '' },
-    { idx: 'PROYECTO 04', title: 'Aegis', tag: 'Reconocimiento e inteligencia de amenazas',
+    { idx: 'PROYECTO 01', title: 'Custodia', tag: 'Integridad de la prueba en investigaciones',
+      body: 'Herramienta de trabajo para investigaciones OSINT. Mantiene cada prueba unida a su fuente, detecta si algo se ha alterado después, y sostiene una línea estricta entre lo observado y lo inferido: un expediente afirma lo que puede demostrar y nada más.',
+      facts: ['Investigación OSINT', 'Integridad de la prueba', 'Observado vs inferido'],
+      status: 'Privado — uso interno', link: '' },
+    { idx: 'PROYECTO 02', title: 'Aegis', tag: 'Reconocimiento e inteligencia de amenazas',
       body: 'Plataforma multiempresa para descubrimiento de superficie de ataque: enumeración de subdominios, detección de DNS wildcard e histórico de escaneos por dominio, presentado como una sala de mapas donde cada activo es un nodo sobre el que actuar, no una fila de una tabla.',
       facts: ['Laravel', 'Multiempresa', 'Descubrimiento de subdominios', 'Sala de mapas'],
       status: 'Despliegue privado', link: '' }
@@ -719,7 +776,7 @@ es: {
     ],
 
     workTitle: 'Trabajo seleccionado',
-    workLede: 'Cuatro herramientas, todas funcionando. Problemas de seguridad con los que me topé y decidí resolver bien.',
+    workLede: 'Herramientas que he construido y uso. Ambas corren en entornos privados, así que aquí está lo que hacen, no cómo están hechas.',
 
     credsTitle: 'Titulaciones',
     creds: [
@@ -768,10 +825,14 @@ es: {
     skillGroups: [
       { h: 'Seguridad', chips: ['Hacking ético y pentesting', 'Seguridad ofensiva', 'Análisis de vulnerabilidades', 'Respuesta a incidentes (Blue Team)', 'Ciberinteligencia y OSINT', 'Desarrollo seguro'], key: 2 },
       { h: 'Sistemas y redes', chips: ['Linux', 'Windows', 'Administración de sistemas', 'Redes', 'VPS · Nginx · pm2', 'Cloudflare · certbot'], key: 0 },
-      { h: 'Ingeniería', chips: ['TypeScript', 'Node.js', 'Next.js / React', 'Laravel / PHP', 'Python', 'MySQL / SQLite', 'Ed25519 · SHA-256', 'mTLS · WebAuthn'], key: 0 },
+      { h: 'Ingeniería', chips: ['TypeScript', 'Node.js', 'Next.js / React', 'Laravel / PHP', 'Python', 'MySQL / SQLite', 'Applied cryptography', 'Strong authentication'], key: 0 },
       { h: 'Con personas', chips: ['Liderazgo de equipos', 'Gestión de operaciones', 'Aprendizaje rápido', 'Español (nativo)', 'Inglés (B2)'], key: 0 }
     ],
 
+    cvTitle: 'Currículum',
+    cvNote: 'El CV completo, en los dos idiomas.',
+    cvEs: 'Descargar CV (español)',
+    cvEn: 'Descargar CV (inglés)',
     contactH: 'Hablemos.',
     contactNote: 'Abierto a puestos de ciberseguridad y a construir herramientas para equipos que las necesiten.',
     ways: [
@@ -784,6 +845,101 @@ es: {
   }
 }
 };
+
+</script>
+<script>
+/* Pure function: same markup in the browser and at build time, so the served
+   HTML already contains the whole dossier for crawlers and no-JS visitors. */
+function esc(x) { return String(x).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+
+function dossierHTML(C) {
+  var O = C.outro, out = [];
+
+  out.push('<header class="dsr-head">');
+  out.push('<div class="eyebrow">' + esc(O.eyebrow) + '</div>');
+  out.push('<h1>' + esc(O.h2) + '</h1>');
+  out.push('<p class="lede">' + esc(O.role) + '</p>');
+  out.push('<p class="lede">' + esc(O.lede) + '</p>');
+  out.push('<div class="quick">' + O.quick.map(function (q) {
+    if (q.protect) return '<a href="#" data-p="' + q.protect + '">' + esc(q.t) + '</a>';
+    return q.href ? '<a href="' + q.href + '" target="_blank" rel="noopener">' + esc(q.t) + '</a>' : '<span>' + esc(q.t) + '</span>';
+  }).join('') + '</div>');
+  out.push('</header>');
+
+  /* 07 — work: the journey ended at 06, so the dossier keeps counting */
+  out.push('<section class="sec"><div class="sec-h"><b>07</b><h3>' + esc(O.workTitle) + '</h3></div>');
+  out.push('<p class="lede" style="margin:-18px 0 34px">' + esc(O.workLede) + '</p>');
+  C.projects.forEach(function (p, i) {
+    out.push('<article class="work"><div class="no">' + String(i + 1).padStart(2, '0') + '</div><div>');
+    out.push('<h4>' + esc(p.title) + '</h4>');
+    out.push('<p class="tag">' + esc(p.tag) + '</p>');
+    out.push('<p>' + esc(p.body) + '</p>');
+    out.push('<div class="foot"><span class="st">' + esc(p.facts.join(' · ')) + '</span>');
+    out.push('<span class="st">' + esc(p.status) + '</span>');
+    if (p.link) out.push('<a href="' + p.link + '" target="_blank" rel="noopener">' + esc(C.openCase) + '</a>');
+    out.push('</div></div></article>');
+  });
+  out.push('</section>');
+
+  /* 08 — qualifications */
+  out.push('<section class="sec"><div class="sec-h"><b>08</b><h3>' + esc(O.credsTitle) + '</h3></div>');
+  O.creds.forEach(function (c) {
+    out.push('<article class="cred">');
+    out.push('<div class="top"><div class="inst">' + esc(c.inst) + '</div><div class="state"><i></i>' + esc(c.state) + '</div></div>');
+    out.push('<h4>' + esc(c.title) + '</h4>');
+    out.push('<div class="fields">' + c.fields.map(function (f) {
+      return '<div>' + esc(f.k) + ' &nbsp;<em>' + esc(f.v) + '</em></div>';
+    }).join('') + '</div>');
+    if (c.modules && c.modules.length) {
+      out.push('<details><summary>' + esc(c.moreLabel) + '</summary><div class="mods">');
+      c.modules.forEach(function (m) {
+        out.push('<div><h5>' + esc(m.h) + '</h5><ul>' + m.items.map(function (it) {
+          return '<li>' + esc(it) + '</li>';
+        }).join('') + '</ul></div>');
+      });
+      out.push('</div></details>');
+    }
+    out.push('</article>');
+  });
+  out.push('<p class="lede" style="font-size:12.5px;margin-top:22px">' + esc(O.credsNote) + '</p>');
+  out.push('</section>');
+
+  /* 09 — experience */
+  out.push('<section class="sec"><div class="sec-h"><b>09</b><h3>' + esc(O.careerTitle) + '</h3></div>');
+  O.career.forEach(function (e) {
+    out.push('<article class="entry"><div class="when">' + esc(e.when) + '</div><div>');
+    out.push('<h4>' + esc(e.title) + '</h4><p class="org">' + esc(e.org) + '</p><p>' + esc(e.body) + '</p>');
+    out.push('</div></article>');
+  });
+  out.push('</section>');
+
+  /* 10 — capabilities */
+  out.push('<section class="sec"><div class="sec-h"><b>10</b><h3>' + esc(O.skillsTitle) + '</h3></div><div class="cols">');
+  O.skillGroups.forEach(function (g) {
+    out.push('<div><h5>' + esc(g.h) + '</h5><div class="chips">' + g.chips.map(function (c, i) {
+      return '<span' + (i < (g.key || 0) ? ' class="key"' : '') + '>' + esc(c) + '</span>';
+    }).join('') + '</div></div>');
+  });
+  out.push('</div></section>');
+
+  /* contact */
+  out.push('<section class="sec"><div class="contact"><div>');
+  out.push('<p class="big">' + esc(O.contactH) + '</p>');
+  out.push('<p class="lede" style="font-size:14px;margin-top:18px">' + esc(O.contactNote) + '</p>');
+  out.push('<div class="cvrow"><span class="cvnote">' + esc(O.cvNote) + '</span>');
+  out.push('<a class="action" href="CV/Ivan_Zubizarreta_CV.pdf" download>' + esc(O.cvEs) + '</a>');
+  out.push('<a class="action" href="CV/Ivan_Zubizarreta_CV_EN.pdf" download>' + esc(O.cvEn) + '</a>');
+  out.push('</div></div>');
+  out.push('<div class="ways">' + O.ways.map(function (w) {
+    if (w.protect) return '<a href="#" data-p="' + w.protect + '">' + esc(w.t) + '</a>';
+    return '<a href="' + w.href + '" target="_blank" rel="noopener">' + esc(w.t) + '</a>';
+  }).join('') + '</div></div>');
+  out.push('<div class="colophon">' + O.colophon.map(function (c) { return '<span>' + esc(c) + '</span>'; }).join('') + '</div>');
+  out.push('</section>');
+
+  return out.join('');
+}
+
 
 </script>
 <script>
@@ -859,10 +1015,8 @@ var POI = [
   { pos: [ 22,  16, -196], kind: 2, info: 3 },
   { pos: [ -8,  22, -262], kind: 4, info: 4 },
 
-  { pos: [ 34,   6,  -34], kind: 3, project: 0 },
-  { pos: [-34,  -4, -100], kind: 3, project: 1 },
-  { pos: [ 16,  22, -164], kind: 3, project: 2 },
-  { pos: [-28,  14, -222], kind: 3, project: 3 }
+  { pos: [ 34,   6,  -40], kind: 3, project: 0 },
+  { pos: [-32,  10, -150], kind: 3, project: 1 }
 ];
 
 var PROJECTS = [];   // filled by applyLang()
@@ -987,6 +1141,8 @@ var U = {
   uMouse:    { value: new THREE.Vector3(0, 0, 0) },
   uMouseAmp: { value: 0 },
   uEpicentre:{ value: new THREE.Vector3(0, 0, -690) },
+  uReveal:   { value: 0 },        // 0..1 the universe assembling itself
+  uVeil:     { value: 0 },        // network steps back while a statement speaks
   uDPR:      { value: renderer.getPixelRatio() }
 };
 
@@ -1053,7 +1209,7 @@ var nodeMat = new THREE.ShaderMaterial({
   uniforms: U, transparent: true, depthWrite: false,
   vertexShader: [
     'attribute float aSize; attribute float aKind; attribute float aThreat; attribute float aSeed;',
-    'uniform float uTime, uFogD, uThreat, uNetFade, uDPR, uMouseAmp, uContain, uPulse;',
+    'uniform float uTime, uFogD, uThreat, uNetFade, uDPR, uMouseAmp, uContain, uPulse, uReveal, uVeil;',
     'uniform vec3 uMouse, uEpicentre;',
     'varying vec3 vColor; varying float vAlpha; varying float vCore;',
     PALETTE, FOG_CHUNK,
@@ -1082,8 +1238,10 @@ var nodeMat = new THREE.ShaderMaterial({
     '  vColor = mix(col, vec3(1.0), fog*0.92);',
     '  float pulse = 0.72 + 0.28*sin(uTime*2.0 + aSeed*50.0);',
     '  vCore = step(1.5, aKind) + ring;',
+    '  float born = smoothstep(0.0, 0.55, uReveal - aSeed*0.45);',
     '  vAlpha = (1.0 - fog) * uNetFade * (0.45 + 0.55*pulse) * (1.0 - th*0.25) + ring*0.5*uNetFade;',
-    '  gl_PointSize = aSize * uDPR * (260.0/max(depth, 1.0)) * (1.0 + ring*0.8 + th*0.4);',
+    '  vAlpha *= born * (1.0 - uVeil*0.55);',
+    '  gl_PointSize = aSize * uDPR * (260.0/max(depth, 1.0)) * (1.0 + ring*0.8 + th*0.4) * (0.4 + born*0.6);',
     '  gl_Position = projectionMatrix * mv;',
     '}'
   ].join('\n'),
@@ -1152,7 +1310,7 @@ var linkMat = new THREE.ShaderMaterial({
   uniforms: U, transparent: true, depthWrite: false,
   vertexShader: [
     'attribute float aAlpha; attribute float aThreat;',
-    'uniform float uTime, uFogD, uThreat, uNetFade, uContain, uPulse;',
+    'uniform float uTime, uFogD, uThreat, uNetFade, uContain, uPulse, uReveal, uVeil;',
     'uniform vec3 uEpicentre;',
     'varying vec3 vColor; varying float vAlpha;',
     PALETTE, FOG_CHUNK,
@@ -1168,6 +1326,7 @@ var linkMat = new THREE.ShaderMaterial({
     '  col = mix(col, C_DEEP, ring);',
     '  vColor = mix(col, vec3(1.0), fog*0.94);',
     '  vAlpha = aAlpha * (1.0 - fog) * uNetFade * (1.0 - th*0.55) + ring*0.25*uNetFade;',
+    '  vAlpha *= smoothstep(0.35, 1.0, uReveal) * (1.0 - uVeil*0.7);',
     '  gl_Position = projectionMatrix * mv;',
     '}'
   ].join('\n'),
@@ -1212,7 +1371,7 @@ var packets = (function buildPackets() {
     uniforms: U, transparent: true, depthWrite: false,
     vertexShader: [
       'attribute vec3 aA; attribute vec3 aB; attribute float aOff; attribute float aSpd; attribute float aThreat;',
-      'uniform float uTime, uFogD, uThreat, uNetFade, uDPR, uContain;',
+      'uniform float uTime, uFogD, uThreat, uNetFade, uDPR, uContain, uReveal, uVeil;',
       'varying vec3 vColor; varying float vAlpha;',
       PALETTE, FOG_CHUNK,
       'void main(){',
@@ -1227,7 +1386,7 @@ var packets = (function buildPackets() {
       '  vec3 col = mix(C_DEEP, C_INK, th);',
       '  vColor = mix(col, vec3(1.0), fog*0.9);',
       '  float head = sin(t*3.1415);',
-      '  vAlpha = (1.0 - fog) * uNetFade * (0.35 + 0.65*head);',
+      '  vAlpha = (1.0 - fog) * uNetFade * (0.35 + 0.65*head) * smoothstep(0.55, 1.0, uReveal) * (1.0 - uVeil*0.7);',
       '  gl_PointSize = (1.9 + head*1.6) * uDPR * (240.0/max(depth,1.0));',
       '  gl_Position = projectionMatrix * mv;',
       '}'
@@ -1269,7 +1428,7 @@ var packets = (function buildPackets() {
     uniforms: U, transparent: true, depthWrite: false,
     vertexShader: [
       'attribute float aSeed;',
-      'uniform float uTime, uFogD, uDPR;',
+      'uniform float uTime, uFogD, uDPR, uReveal, uVeil;',
       'varying float vAlpha;',
       FOG_CHUNK,
       'void main(){',
@@ -1278,7 +1437,7 @@ var packets = (function buildPackets() {
       '  p.x += cos(uTime*0.17 + aSeed*28.0)*4.0;',
       '  vec4 mv = modelViewMatrix * vec4(p,1.0);',
       '  float depth = -mv.z;',
-      '  vAlpha = (1.0 - fogMix(depth)) * (0.10 + 0.16*aSeed);',
+      '  vAlpha = (1.0 - fogMix(depth)) * (0.10 + 0.16*aSeed) * uReveal * (1.0 - uVeil*0.6);',
       '  gl_PointSize = (0.8 + aSeed) * uDPR * (200.0/max(depth,1.0));',
       '  gl_Position = projectionMatrix * mv;',
       '}'
@@ -1584,7 +1743,7 @@ var poiObjects = (function buildPOI() {
     uniforms: U, transparent: true, depthWrite: false,
     vertexShader: [
       'attribute float aKind; attribute float aHot;',
-      'uniform float uTime, uFogD, uDPR, uNetFade, uThreat;',
+      'uniform float uTime, uFogD, uDPR, uNetFade, uThreat, uReveal, uVeil;',
       'varying vec3 vColor; varying float vAlpha; varying float vHot;',
       PALETTE, FOG_CHUNK,
       'void main(){',
@@ -1598,7 +1757,7 @@ var poiObjects = (function buildPOI() {
       '  vColor = mix(col, vec3(1.0), fog*0.8);',
       '  float beat = 0.6 + 0.4*sin(uTime*1.6 + aKind*2.0);',
       '  vHot = aHot;',
-      '  vAlpha = (1.0 - fog) * uNetFade * (0.55 + 0.45*beat);',
+      '  vAlpha = (1.0 - fog) * uNetFade * (0.55 + 0.45*beat) * smoothstep(0.5, 1.0, uReveal) * (1.0 - uVeil*0.45);',
       '  gl_PointSize = (5.0 + aHot*7.0) * uDPR * (260.0/max(depth,1.0));',
       '  gl_Position = projectionMatrix * mv;',
       '}'
@@ -1994,8 +2153,6 @@ audioBtn.addEventListener('click', function () {
    The dossier — where the journey lands. Same content in both languages,
    and the whole of it when WebGL is unavailable.
    -------------------------------------------------------------------------- */
-function esc(x) { return String(x).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
-
 /* --------------------------------------------------------------------------
    Personal channels. The address and the number are never written into the
    document — not as text, not as an href. They are assembled in the browser
@@ -2028,87 +2185,7 @@ function armContacts(root) {
 function buildDossier() {
   var host = document.getElementById('readable');
   if (!host) return;
-  var C = T(), O = C.outro, out = [];
-
-  out.push('<header class="dsr-head">');
-  out.push('<div class="eyebrow">' + esc(O.eyebrow) + '</div>');
-  out.push('<h2>' + esc(O.h2) + '</h2>');
-  out.push('<p class="lede">' + esc(O.role) + '</p>');
-  out.push('<p class="lede">' + esc(O.lede) + '</p>');
-  out.push('<div class="quick">' + O.quick.map(function (q) {
-    if (q.protect) return '<a href="#" data-p="' + q.protect + '">' + esc(q.t) + '</a>';
-    return q.href ? '<a href="' + q.href + '" target="_blank" rel="noopener">' + esc(q.t) + '</a>' : '<span>' + esc(q.t) + '</span>';
-  }).join('') + '</div>');
-  out.push('</header>');
-
-  /* 07 — work: the journey ended at 06, so the dossier keeps counting */
-  out.push('<section class="sec"><div class="sec-h"><b>07</b><h3>' + esc(O.workTitle) + '</h3></div>');
-  out.push('<p class="lede" style="margin:-18px 0 34px">' + esc(O.workLede) + '</p>');
-  C.projects.forEach(function (p, i) {
-    out.push('<article class="work"><div class="no">' + String(i + 1).padStart(2, '0') + '</div><div>');
-    out.push('<h4>' + esc(p.title) + '</h4>');
-    out.push('<p class="tag">' + esc(p.tag) + '</p>');
-    out.push('<p>' + esc(p.body) + '</p>');
-    out.push('<div class="foot"><span class="st">' + esc(p.facts.join(' · ')) + '</span>');
-    out.push('<span class="st">' + esc(p.status) + '</span>');
-    if (p.link) out.push('<a href="' + p.link + '" target="_blank" rel="noopener">' + esc(C.openCase) + '</a>');
-    out.push('</div></div></article>');
-  });
-  out.push('</section>');
-
-  /* 08 — qualifications */
-  out.push('<section class="sec"><div class="sec-h"><b>08</b><h3>' + esc(O.credsTitle) + '</h3></div>');
-  O.creds.forEach(function (c) {
-    out.push('<article class="cred">');
-    out.push('<div class="top"><div class="inst">' + esc(c.inst) + '</div><div class="state"><i></i>' + esc(c.state) + '</div></div>');
-    out.push('<h4>' + esc(c.title) + '</h4>');
-    out.push('<div class="fields">' + c.fields.map(function (f) {
-      return '<div>' + esc(f.k) + ' &nbsp;<em>' + esc(f.v) + '</em></div>';
-    }).join('') + '</div>');
-    if (c.modules && c.modules.length) {
-      out.push('<details><summary>' + esc(c.moreLabel) + '</summary><div class="mods">');
-      c.modules.forEach(function (m) {
-        out.push('<div><h5>' + esc(m.h) + '</h5><ul>' + m.items.map(function (it) {
-          return '<li>' + esc(it) + '</li>';
-        }).join('') + '</ul></div>');
-      });
-      out.push('</div></details>');
-    }
-    out.push('</article>');
-  });
-  out.push('<p class="lede" style="font-size:12.5px;margin-top:22px">' + esc(O.credsNote) + '</p>');
-  out.push('</section>');
-
-  /* 09 — experience */
-  out.push('<section class="sec"><div class="sec-h"><b>09</b><h3>' + esc(O.careerTitle) + '</h3></div>');
-  O.career.forEach(function (e) {
-    out.push('<article class="entry"><div class="when">' + esc(e.when) + '</div><div>');
-    out.push('<h4>' + esc(e.title) + '</h4><p class="org">' + esc(e.org) + '</p><p>' + esc(e.body) + '</p>');
-    out.push('</div></article>');
-  });
-  out.push('</section>');
-
-  /* 10 — capabilities */
-  out.push('<section class="sec"><div class="sec-h"><b>10</b><h3>' + esc(O.skillsTitle) + '</h3></div><div class="cols">');
-  O.skillGroups.forEach(function (g) {
-    out.push('<div><h5>' + esc(g.h) + '</h5><div class="chips">' + g.chips.map(function (c, i) {
-      return '<span' + (i < (g.key || 0) ? ' class="key"' : '') + '>' + esc(c) + '</span>';
-    }).join('') + '</div></div>');
-  });
-  out.push('</div></section>');
-
-  /* contact */
-  out.push('<section class="sec"><div class="contact"><div>');
-  out.push('<p class="big">' + esc(O.contactH) + '</p>');
-  out.push('<p class="lede" style="font-size:14px;margin-top:18px">' + esc(O.contactNote) + '</p></div>');
-  out.push('<div class="ways">' + O.ways.map(function (w) {
-    if (w.protect) return '<a href="#" data-p="' + w.protect + '">' + esc(w.t) + '</a>';
-    return '<a href="' + w.href + '" target="_blank" rel="noopener">' + esc(w.t) + '</a>';
-  }).join('') + '</div></div>');
-  out.push('<div class="colophon">' + O.colophon.map(function (c) { return '<span>' + esc(c) + '</span>'; }).join('') + '</div>');
-  out.push('</section>');
-
-  host.innerHTML = out.join('');
+  host.innerHTML = dossierHTML(T());
   armContacts(host);
 }
 
@@ -2224,7 +2301,7 @@ applyLang(LANG);
    7. LOOP
    ========================================================================== */
 var pTarget = 0, pNow = 0, lastScene = -1, pulsePlayed = false;
-var pPrev = 0, travelSpeed = 0;
+var pPrev = 0, travelSpeed = 0, revealT = 0;
 var proj = new THREE.Vector3();
 var vNdc = new THREE.Vector3(), vDir = new THREE.Vector3();
 var clock = new THREE.Clock();
@@ -2268,6 +2345,13 @@ function frame() {
   var time = (performance.now() - t0) * 0.001;
   U.uTime.value = time;
 
+  /* the universe assembles itself once the loader is out of the way:
+     particles first, then connections, then traffic */
+  if (!body.classList.contains('is-loading')) {
+    revealT = Math.min(1, revealT + dt / (REDUCED ? 0.3 : 3.2));
+  }
+  U.uReveal.value = REDUCED ? 1 : smooth(revealT);
+
   /* --- scroll smoothing: motion has to feel expensive --------------------- */
   pNow += (pTarget - pNow) * (REDUCED ? 0.5 : 1 - Math.pow(0.0009, dt));
   var p = pNow;
@@ -2294,6 +2378,7 @@ function frame() {
   /* --- camera ------------------------------------------------------------- */
   sampleCamera(p);
   var driftAmp = REDUCED ? 0 : 1;
+  camPos.z += (1 - U.uReveal.value) * 26;   // pull back slightly while it builds
   pointerLerp.x += ((mouse.active ? mouse.nx : 0) - pointerLerp.x) * 0.045;
   pointerLerp.y += ((mouse.active ? mouse.ny : 0) - pointerLerp.y) * 0.045;
   camera.position.set(
@@ -2325,17 +2410,20 @@ function frame() {
   DEFENSE.shell.rotation.y = -time * 0.04;
 
   /* --- typography beats --------------------------------------------------- */
+  var loudest = 0;
   for (var bi = 0; bi < BEATS.length; bi++) {
     var B = BEATS[bi];
     var el = beatEls[B[0]];
     if (!el) continue;
     var o = window4(p, B[1], B[2], B[3], B[4]);
+    if (o > loudest) loudest = o;
     if (o !== el._o) {
       el.style.opacity = o;
       el.style.transform = 'translateY(' + ((1 - o) * 14).toFixed(2) + 'px)';
       el._o = o;
     }
   }
+  U.uVeil.value += (loudest - U.uVeil.value) * Math.min(1, dt * 6);
   whiteout.style.opacity = window4(p, 0.548, 0.576, 0.598, 0.628) * 0.97;
   var ctaO = window4(p, 0.952, 0.972, 1.001, 1.002);
   ctaEl.style.opacity = ctaO;
