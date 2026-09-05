@@ -296,21 +296,91 @@ body.nogl #stage,body.nogl #spatial,body.nogl #statements,body.nogl #lens,body.n
 body.nogl #track{height:auto}
 body.nogl #fallback{padding-top:clamp(30px,6vh,60px); border-top:none}
 body.landed #nav,body.landed #hud,body.landed #identity,body.landed #lens,body.landed #cta{opacity:0; pointer-events:none}
-#fallback .fb-wrap{max-width:760px; margin:0 auto; padding:0 var(--pad)}
-#fallback section{min-height:78vh; display:flex; flex-direction:column; justify-content:center; border-top:1px solid var(--hair)}
-#fallback section:first-child{border-top:none; min-height:92vh}
-#fallback .k{font-size:10px; letter-spacing:.34em; color:var(--electric); margin-bottom:20px}
-#fallback h2{font-weight:200; font-size:clamp(30px,6vw,66px); letter-spacing:-.035em; line-height:1; margin:0}
-#fallback p{font-weight:300; line-height:1.75; color:rgba(7,17,31,.72); max-width:60ch; margin:22px 0 0}
-#fallback .fbfield{
-  height:200px; margin-top:36px; border:1px solid var(--hair); border-radius:2px;
-  background:
-    radial-gradient(1px 1px at 20% 30%, var(--electric), transparent 60%),
-    radial-gradient(1px 1px at 62% 55%, var(--deep), transparent 60%),
-    radial-gradient(1px 1px at 80% 22%, var(--electric), transparent 60%),
-    radial-gradient(1px 1px at 38% 74%, var(--electric), transparent 60%),
-    linear-gradient(180deg, #fff, var(--ice));
+#fallback .fb-wrap{max-width:1040px; margin:0 auto; padding:0 var(--pad)}
+
+/* ---- dossier: the readable layer you land on after the journey ---- */
+.dsr-head{border-bottom:1px solid var(--hair); padding-bottom:clamp(28px,5vh,52px)}
+.dsr-head .eyebrow{font-size:10px; letter-spacing:.34em; color:var(--electric)}
+.dsr-head h2{
+  margin:clamp(18px,3vh,30px) 0 0; font-weight:200; letter-spacing:-.04em;
+  font-size:clamp(34px,7vw,84px); line-height:.96; max-width:16ch;
 }
+.dsr-head .lede{margin:clamp(20px,3vh,30px) 0 0; font-weight:300; font-size:clamp(15px,1.35vw,18px); line-height:1.72; color:rgba(7,17,31,.72); max-width:58ch}
+.dsr-head .quick{display:flex; flex-wrap:wrap; gap:10px 26px; margin-top:clamp(24px,4vh,38px); font-size:12px; letter-spacing:.06em; color:var(--muted)}
+.dsr-head .quick a{color:var(--deep); text-decoration:none; border-bottom:1px solid rgba(22,119,255,.28); padding-bottom:2px}
+.dsr-head .quick a:hover{border-color:var(--deep)}
+
+.sec{padding:clamp(48px,9vh,96px) 0; border-bottom:1px solid var(--hair)}
+.sec:last-child{border-bottom:none}
+.sec-h{display:flex; align-items:baseline; gap:16px; margin-bottom:clamp(28px,4vh,46px)}
+.sec-h b{font-size:10px; letter-spacing:.2em; color:var(--electric); font-weight:500; font-variant-numeric:tabular-nums}
+.sec-h h3{margin:0; font-weight:300; font-size:clamp(19px,2.2vw,27px); letter-spacing:-.02em}
+
+.entry{display:grid; grid-template-columns:132px 1fr; gap:clamp(14px,3vw,40px); padding:26px 0; border-top:1px solid var(--hair)}
+.entry:first-of-type{border-top:none; padding-top:0}
+.entry .when{font-size:11.5px; letter-spacing:.1em; color:var(--muted); font-variant-numeric:tabular-nums; padding-top:4px}
+.entry h4{margin:0; font-weight:400; font-size:clamp(16px,1.6vw,20px); letter-spacing:-.01em}
+.entry .org{margin:7px 0 0; font-size:12.5px; letter-spacing:.05em; color:var(--electric)}
+.entry p{margin:12px 0 0; font-weight:300; font-size:14.5px; line-height:1.7; color:rgba(7,17,31,.66); max-width:62ch}
+
+/* credential: reads like a signed record, not a certificate scan */
+.cred{border:1px solid var(--hair); padding:clamp(20px,2.6vw,30px); margin-top:18px; position:relative; background:linear-gradient(180deg,#fff, #FCFDFF)}
+.cred:first-of-type{margin-top:0}
+.cred .top{display:flex; justify-content:space-between; gap:18px; align-items:flex-start; flex-wrap:wrap}
+.cred .inst{font-size:11px; letter-spacing:.22em; color:var(--muted)}
+.cred .state{font-size:10px; letter-spacing:.2em; color:var(--electric); display:flex; align-items:center; gap:8px}
+.cred .state i{width:5px; height:5px; border-radius:50%; background:var(--electric); display:block}
+.cred h4{margin:14px 0 0; font-weight:300; font-size:clamp(18px,2vw,25px); letter-spacing:-.02em; max-width:32ch}
+.cred .fields{display:flex; flex-wrap:wrap; gap:8px 34px; margin-top:20px}
+.cred .fields div{font-size:12px; color:var(--muted); font-variant-numeric:tabular-nums}
+.cred .fields div em{font-style:normal; color:var(--ink); letter-spacing:.02em}
+.cred details{margin-top:20px; border-top:1px solid var(--hair); padding-top:16px}
+.cred summary{cursor:pointer; font-size:11px; letter-spacing:.2em; color:var(--deep); list-style:none}
+.cred summary::-webkit-details-marker{display:none}
+.cred summary::before{content:'+ '; color:var(--electric)}
+.cred details[open] summary::before{content:'– '}
+.cred .mods{margin-top:18px; display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:22px}
+.cred .mods h5{margin:0 0 10px; font-size:11px; letter-spacing:.16em; color:var(--electric); font-weight:500}
+.cred .mods ul{margin:0; padding:0; list-style:none}
+.cred .mods li{font-size:13px; font-weight:300; line-height:1.65; color:rgba(7,17,31,.66)}
+
+.chips{display:flex; flex-wrap:wrap; gap:9px}
+.chips span{font-size:12px; letter-spacing:.04em; color:rgba(7,17,31,.7); border:1px solid var(--hair); border-radius:999px; padding:9px 15px}
+.chips span.key{border-color:rgba(22,119,255,.4); color:var(--deep)}
+.cols{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:clamp(24px,4vw,52px)}
+.cols h5{margin:0 0 16px; font-size:11px; letter-spacing:.2em; color:var(--muted); font-weight:400}
+
+.work{display:grid; grid-template-columns:132px 1fr; gap:clamp(14px,3vw,40px); padding:30px 0; border-top:1px solid var(--hair)}
+.work:first-of-type{border-top:none; padding-top:0}
+.work .no{font-size:11.5px; letter-spacing:.16em; color:var(--electric); font-variant-numeric:tabular-nums; padding-top:5px}
+.work h4{margin:0; font-weight:300; font-size:clamp(20px,2.4vw,30px); letter-spacing:-.02em}
+.work .tag{margin:8px 0 0; font-size:12.5px; letter-spacing:.05em; color:var(--muted)}
+.work p{margin:14px 0 0; font-weight:300; font-size:14.5px; line-height:1.72; color:rgba(7,17,31,.7); max-width:64ch}
+.work .foot{display:flex; flex-wrap:wrap; align-items:center; gap:10px 18px; margin-top:18px}
+.work .foot .st{font-size:11px; letter-spacing:.14em; color:var(--muted)}
+.work .foot a{font-size:11px; letter-spacing:.2em; color:var(--deep); text-decoration:none; border-bottom:1px solid rgba(22,119,255,.3); padding-bottom:3px}
+.work .foot a:hover{border-color:var(--deep)}
+
+.contact{display:flex; flex-wrap:wrap; gap:clamp(20px,5vw,80px); align-items:flex-end; justify-content:space-between}
+.contact .big{font-weight:200; font-size:clamp(28px,4.6vw,58px); letter-spacing:-.035em; line-height:1.02; margin:0; max-width:14ch}
+.contact .ways{display:flex; flex-direction:column; gap:12px}
+.contact .ways a,.contact .ways span{font-size:14px; letter-spacing:.02em; color:rgba(7,17,31,.72); text-decoration:none}
+.contact .ways a:hover{color:var(--deep)}
+.colophon{padding:34px 0 10px; font-size:11px; letter-spacing:.08em; color:rgba(7,17,31,.34); display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px}
+
+@media (max-width:700px){
+  .entry,.work{grid-template-columns:1fr; gap:10px}
+  .entry .when,.work .no{padding-top:0}
+}
+
+#langswitch{display:flex; align-items:center; gap:5px}
+#langswitch button{
+  background:none; border:none; cursor:pointer; font-family:inherit; padding:4px 2px;
+  font-size:9.5px; letter-spacing:.22em; color:var(--muted); transition:color .35s var(--ease);
+}
+#langswitch span{font-size:9.5px; color:rgba(7,17,31,.2)}
+#langswitch button:hover{color:var(--deep)}
+#langswitch button.on{color:var(--electric)}
 
 /* ============================================================
    ACCESSIBILITY
@@ -335,7 +405,7 @@ body.landed #nav,body.landed #hud,body.landed #identity,body.landed #lens,body.l
 </head>
 <body class="is-loading">
 
-<a class="skip" href="#readable">Skip to text version</a>
+<a class="skip" href="#readable" id="skipLink">Skip to text version</a>
 
 <!-- ================= LOADER ================= -->
 <div id="loader" role="status" aria-live="polite">
@@ -355,33 +425,11 @@ body.landed #nav,body.landed #hud,body.landed #identity,body.landed #lens,body.l
 <div id="spatial"></div>
 
 <!-- ================= STATEMENTS ================= -->
-<div id="statements" aria-hidden="true">
-  <div class="beat" data-beat="intro-a"><h1>The digital world never sleeps.</h1></div>
-  <div class="beat" data-beat="intro-b"><h1>Neither do the threats.</h1></div>
-
-  <div class="beat" data-beat="net"><span class="kicker">01 — The network</span><h2>Billions of connections.</h2><p class="sub">Devices, people, services. Every link is a decision to trust something.</p></div>
-  <div class="beat" data-beat="net2"><h2>You are inside it.</h2></div>
-
-  <div class="beat" data-beat="threat"><span class="kicker">02 — The threat</span><h2>Something changed.</h2></div>
-  <div class="beat" data-beat="threat2"><h2>One unknown device.</h2><p class="sub">It behaves almost like the others. Almost.</p></div>
-
-  <div class="beat" data-beat="attack"><span class="kicker">03 — The attack</span><h2>It only needs one path.</h2></div>
-  <div class="beat tight" data-beat="breach"><h2>One breach can change everything.</h2></div>
-
-  <div class="beat" data-beat="detected"><span class="kicker">04 — The defense</span><h2>Threat detected.</h2></div>
-  <div class="beat" data-beat="contained"><h2>Threat contained.</h2></div>
-
-  <div class="beat tight" data-beat="human"><span class="kicker">05 — The human</span><h2>Behind every device,<br />there is a person.</h2>
-    <div class="terms"><span>Identity</span><span>Trust</span><span>Awareness</span><span>Human error</span></div>
-  </div>
-
-  <div class="beat" data-beat="wall"><span class="kicker">06 — The future</span><h2>Security is not a wall.</h2></div>
-  <div class="beat" data-beat="living"><h2>It's a living system.</h2></div>
-</div>
+<div id="statements" aria-hidden="true"></div>
 
 <div id="cta">
-  <a class="action primary" href="#readable" id="ctaEnter">ENTER THE SYSTEM</a>
-  <a class="action" href="mailto:iazv.ivan@gmail.com">GET IN TOUCH</a>
+  <a class="action primary" href="#readable" id="ctaEnter"></a>
+  <a class="action" id="ctaMail" href="mailto:iazv.ivan@gmail.com"></a>
 </div>
 
 <!-- ================= INSTRUMENTS ================= -->
@@ -406,13 +454,16 @@ body.landed #nav,body.landed #hud,body.landed #identity,body.landed #lens,body.l
 <!-- ================= CHROME ================= -->
 <div id="identity">
   <div class="n">Iván Zubizarreta</div>
-  <div class="r">Security engineering &amp; offensive security</div>
+  <div class="r" id="identityRole"></div>
 </div>
 
 <nav id="nav" aria-label="Journey"></nav>
 
 <div id="hud">
   <button id="audio" type="button" aria-pressed="false">SOUND OFF</button>
+  <div id="langswitch" role="group" aria-label="Language">
+    <button type="button" data-lang="en">EN</button><span>/</span><button type="button" data-lang="es">ES</button>
+  </div>
   <div id="scenelabel">01 — THE NETWORK</div>
 </div>
 
@@ -423,25 +474,318 @@ body.landed #nav,body.landed #hud,body.landed #identity,body.landed #lens,body.l
 <div id="track"></div>
 
 <!-- ================= READABLE / FALLBACK ================= -->
-<div id="fallback">
-  <div class="fb-wrap" id="readable">
-    <section>
-      <div class="k">Iván Zubizarreta — cybersecurity</div>
-      <h2>Security is not a wall. It's a living system.</h2>
-      <p>This site is normally an interactive 3D journey through a digital network. Your device is showing the text version, which carries the same story.</p>
-      <div class="fbfield" aria-hidden="true"></div>
-    </section>
-    <section><div class="k">01 — The network</div><h2>Billions of connections.</h2><p>Endpoints, servers, applications, identities and data moving between them. Every connection is a decision to trust something, and the map of those decisions is the real perimeter.</p></section>
-    <section><div class="k">02 — The threat</div><h2>Something changed.</h2><p>Phishing redirects a path. Credential theft turns a known identity into an unknown one. Ransomware isolates whole clusters. A supply chain attack arrives signed and trusted. A zero-day appears where the system was considered stable.</p></section>
-    <section><div class="k">03 — The attack</div><h2>It only needs one path.</h2><p>User, endpoint, application, server, database. Propagation is rarely loud: it looks like normal traffic until the moment it doesn't.</p></section>
-    <section><div class="k">04 — The defense</div><h2>Detection, containment, recovery.</h2><p>Monitoring, identity, endpoint protection, network security, threat intelligence, incident response and zero trust are not products in a stack. They are one system that has to notice, decide and act faster than the attacker moves.</p></section>
-    <section><div class="k">05 — The human</div><h2>Behind every device, there is a person.</h2><p>Identity, trust, awareness, human error. Cybersecurity protects people who are trying to do their job, not abstractions.</p></section>
-    <section id="work"><div class="k">Selected work</div><h2>Tools built, not slides.</h2><div id="fbProjects"></div></section>
-    <section><div class="k">Contact</div><h2>Let's talk.</h2><p><a href="mailto:iazv.ivan@gmail.com">iazv.ivan@gmail.com</a> · <a href="https://www.linkedin.com/in/i-zubizarreta" target="_blank" rel="noopener">LinkedIn</a></p></section>
-  </div>
-</div>
+<div id="fallback"><div class="fb-wrap" id="readable"></div></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ============================================================================
+   CONTENT — every word in the experience, in both languages.
+   Nothing else in the codebase contains copy. Edit here.
+   ========================================================================== */
+var CONTENT = {
+
+/* ==========================================================================
+   ENGLISH
+   ========================================================================== */
+en: {
+  role: 'Security engineering & offensive security',
+  scenes: ['THE NETWORK', 'THE THREAT', 'THE ATTACK', 'THE DEFENSE', 'THE HUMAN', 'THE FUTURE'],
+  hint: 'SCROLL TO TRAVEL',
+  soundOn: 'SOUND ON', soundOff: 'SOUND OFF',
+  ctaEnter: 'SEE THE WORK', ctaMail: 'GET IN TOUCH',
+  skip: 'Skip to the text version',
+  riskLabel: 'RISK LEVEL: ',
+  caseStudy: 'CASE STUDY',
+  explore: 'CLICK TO EXPLORE', exploreTouch: 'TAP TO EXPLORE',
+  openCase: 'OPEN PROJECT', close: 'CLOSE',
+
+  beats: {
+    'intro-a':  { h: 'The digital world never sleeps.' },
+    'intro-b':  { h: 'Neither do the threats.' },
+    'net':      { kicker: '01 — The network', h: 'Billions of connections.', sub: 'Devices, people, services. Every link is a decision to trust something.' },
+    'net2':     { h: 'You are inside it.' },
+    'threat':   { kicker: '02 — The threat', h: 'Something changed.' },
+    'threat2':  { h: 'One unknown device.', sub: 'It behaves almost like the others. Almost.' },
+    'attack':   { kicker: '03 — The attack', h: 'It only needs one path.' },
+    'breach':   { h: 'One breach can change everything.' },
+    'detected': { kicker: '04 — The defense', h: 'Threat detected.' },
+    'contained':{ h: 'Threat contained.' },
+    'human':    { kicker: '05 — The human', h: 'Behind every device,<br />there is a person.', terms: ['Identity', 'Trust', 'Awareness', 'Human error'] },
+    'wall':     { kicker: '06 — The future', h: 'Security is not a wall.' },
+    'living':   { h: "It's a living system." }
+  },
+
+  labels: [
+    { t: 'PHISHING',            d: 'a trusted path, redirected' },
+    { t: 'CREDENTIAL THEFT',    d: 'a known identity, acting unknown' },
+    { t: 'RANSOMWARE',          d: 'connected nodes, locked apart' },
+    { t: 'SUPPLY CHAIN',        d: 'it arrived signed' },
+    { t: 'INSIDER',             d: 'inside, by definition' },
+    { t: 'ZERO-DAY',            d: 'no signature exists yet' },
+    { t: 'USER', d: '' }, { t: 'ENDPOINT', d: '' }, { t: 'APPLICATION', d: '' },
+    { t: 'SERVER', d: '' }, { t: 'DATABASE', d: '' },
+    { t: 'DETECTION', d: '' }, { t: 'MONITORING', d: '' }, { t: 'IDENTITY', d: '' },
+    { t: 'ENDPOINT PROTECTION', d: '' }, { t: 'NETWORK SECURITY', d: '' },
+    { t: 'THREAT INTELLIGENCE', d: '' }, { t: 'INCIDENT RESPONSE', d: '' }, { t: 'ZERO TRUST', d: '' }
+  ],
+
+  poi: [
+    { name: 'ENDPOINT',     meta: 'Managed laptop · EDR active',                risk: 'LOW' },
+    { name: 'SERVER',       meta: 'Production environment · public surface',    risk: 'MEDIUM' },
+    { name: 'IDENTITY',     meta: 'SSO provider · 4.2k active sessions',        risk: 'LOW' },
+    { name: 'DATA STORE',   meta: 'Customer records · encrypted at rest',       risk: 'MEDIUM' },
+    { name: 'UNKNOWN NODE', meta: 'Unusual outbound activity · unmanaged',      risk: 'HIGH' }
+  ],
+
+  projects: [
+    { idx: 'PROJECT 01', title: 'Portcullis', tag: 'MCP security gateway',
+      body: 'A gateway that sits between an AI agent and its MCP servers. It authorises every tool call, pins tool definitions so a silently rewritten tool — rug-pull, tool shadowing — is caught before it runs, enforces scope and writes an append-only audit trail.',
+      facts: ['TypeScript', 'MCP SDK', 'Per-tool authorisation', 'Rug-pull detection'],
+      status: 'Open source', link: 'https://github.com/ivanzubizarretavazquez' },
+    { idx: 'PROJECT 02', title: 'Stricture', tag: 'Least-privilege scanner for AI agents',
+      body: 'Scans MCP configurations entirely in the browser — the config never leaves the machine — maps which agent reaches which tools, flags over-permissioned connections, filesystem roots, unpinned packages and plaintext secrets, and exports a signed audit report anyone can verify.',
+      facts: ['Next.js', 'Ed25519 signing', 'Client-side analysis', 'A–F grading'],
+      status: 'Open source', link: 'https://github.com/ivanzubizarretavazquez' },
+    { idx: 'PROJECT 03', title: 'Custodia', tag: 'Chain of custody for OSINT work',
+      body: 'Evidence notebook for investigations. Every item is sealed with its source, a SHA-256 fingerprint and an Ed25519 signature, and the tool keeps observed facts strictly separate from inferred ones. Access is private: mutual TLS with a non-exportable client certificate plus a passkey.',
+      facts: ['Next.js', 'mTLS + WebAuthn', 'Tamper detection', 'Observed vs inferred'],
+      status: 'Private deployment', link: '' },
+    { idx: 'PROJECT 04', title: 'Aegis', tag: 'Reconnaissance and cyber intelligence',
+      body: 'Multi-tenant platform for attack-surface discovery: subdomain enumeration, wildcard DNS detection and per-domain scan history, presented as a map room where each asset is a node you can act on rather than a row in a table.',
+      facts: ['Laravel', 'Multi-tenant', 'Subdomain discovery', 'Map room'],
+      status: 'Private deployment', link: '' }
+  ],
+
+  outro: {
+    eyebrow: 'The person who built this',
+    h2: 'Iván Zubizarreta',
+    role: 'Cybersecurity analyst — offensive security and ethical hacking',
+    lede: 'Systems and cybersecurity technician, trained from the ground up: microcomputer systems and networks, then network systems administration, then a master\'s in cybersecurity management, ethical hacking and offensive security. I build the tools I would want to use — signed evidence, least privilege, agents that can be audited — and I care about the part of the job that happens after the alert fires.',
+    quick: [
+      { t: 'Madrid, Spain' },
+      { t: '+34 643 998 294', href: 'tel:+34643998294' },
+      { t: 'iazv.ivan@gmail.com', href: 'mailto:iazv.ivan@gmail.com' },
+      { t: 'LinkedIn', href: 'https://www.linkedin.com/in/i-zubizarreta' }
+    ],
+
+    workTitle: 'Selected work',
+    workLede: 'Four tools, all of them running. Security problems I hit myself and decided to solve properly.',
+
+    credsTitle: 'Qualifications',
+    creds: [
+      {
+        inst: 'EIP INTERNATIONAL BUSINESS SCHOOL', state: 'COMPLETED · JUNE 2026',
+        title: 'Master\'s in Cybersecurity Management, Ethical Hacking and Offensive Security',
+        fields: [
+          { k: 'Workload', v: '1,700 hours' },
+          { k: 'Credits', v: '68 ECTS' },
+          { k: 'Completed', v: '3 June 2026' },
+          { k: 'Registry no.', v: 'MDCHESO/EIP_2026_533' }
+        ],
+        moreLabel: 'Programme contents',
+        modules: [
+          { h: 'Offensive security', items: ['Ethical hacking', 'Cryptology', 'Offensive security', 'Cyber intelligence and cyber threats', 'Deep web and dark web investigation', 'Advanced security testing (incl. OT/IoT)'] },
+          { h: 'Defensive security', items: ['Cybersecurity architecture', 'Cybersecurity and disruptive technologies', 'Cybersecurity strategy', 'Crisis management and cyber resilience', 'Risk management', 'Incident response teams (Blue Team)', 'IT security governance', 'Regulation and legislation', 'Security in software development', 'Identification, prevention, protection, response and recovery'] },
+          { h: 'Cross-disciplinary', items: ['Personal brand strategy in cybersecurity', 'Leadership skills', 'International English certification prep', 'Master\'s final project'] }
+        ]
+      },
+      {
+        inst: 'CEAC FP', state: 'IN PROGRESS · SINCE 2025',
+        title: 'Higher Vocational Diploma in Network Systems Administration (ASIR)',
+        fields: [{ k: 'Level', v: 'Spanish higher VET · EQF 5' }, { k: 'Focus', v: 'Servers, networks, virtualisation' }],
+        moreLabel: '', modules: []
+      },
+      {
+        inst: 'IES PALOMERAS VALLECAS', state: 'COMPLETED · 2024',
+        title: 'Intermediate Vocational Diploma in Microcomputer Systems and Networks (SMR)',
+        fields: [{ k: 'Period', v: '2022 — 2024' }, { k: 'Focus', v: 'Systems, hardware, networking' }],
+        moreLabel: '', modules: []
+      }
+    ],
+    credsNote: 'Certificates and registry numbers available on request, and verifiable directly with each institution.',
+
+    careerTitle: 'Experience',
+    career: [
+      { when: '2025 — Present', title: 'Head Cashier', org: 'Corral de la Morería, Madrid',
+        body: 'Cash desk and daily operations control — counts, reconciliation and closing — guaranteeing financial accuracy at one of the most internationally recognised flamenco venues. It is where I learned that a process is only as reliable as its worst night.' },
+      { when: '2024 — 2025', title: 'Venue Manager', org: 'Hospitality',
+        body: 'Ran daily operations: team management and training, shift planning, stock and order control, opening and closing, service quality. Responsibility for people and for numbers at the same time.' },
+      { when: '2024', title: 'Access control system', org: 'Kubernesys',
+        body: 'Designed and implemented an access control system covering both the physical device and the web management application, with security and remote connectivity as the design constraints.' }
+    ],
+
+    skillsTitle: 'Capabilities',
+    skillGroups: [
+      { h: 'Security', chips: ['Ethical hacking & pentesting', 'Offensive security', 'Vulnerability assessment', 'Incident response (Blue Team)', 'Cyber intelligence & OSINT', 'Secure development'], key: 2 },
+      { h: 'Systems & networks', chips: ['Linux', 'Windows', 'Systems administration', 'Networking', 'VPS · Nginx · pm2', 'Cloudflare · certbot'], key: 0 },
+      { h: 'Engineering', chips: ['TypeScript', 'Node.js', 'Next.js / React', 'Laravel / PHP', 'Python', 'MySQL / SQLite', 'Ed25519 · SHA-256', 'mTLS · WebAuthn'], key: 0 },
+      { h: 'Working with people', chips: ['Team leadership', 'Operations management', 'Fast learner', 'Spanish (native)', 'English (B2)'], key: 0 }
+    ],
+
+    contactH: 'Let\'s talk.',
+    contactNote: 'Open to cybersecurity roles and to building tools for teams who need them.',
+    ways: [
+      { t: 'iazv.ivan@gmail.com', href: 'mailto:iazv.ivan@gmail.com' },
+      { t: '+34 643 998 294', href: 'tel:+34643998294' },
+      { t: 'linkedin.com/in/i-zubizarreta', href: 'https://www.linkedin.com/in/i-zubizarreta' },
+      { t: 'github.com/ivanzubizarretavazquez', href: 'https://github.com/ivanzubizarretavazquez' }
+    ],
+    colophon: ['Built with Three.js. No trackers, no cookies.', 'Madrid — 2026']
+  }
+},
+
+/* ==========================================================================
+   ESPAÑOL
+   ========================================================================== */
+es: {
+  role: 'Seguridad ofensiva y hacking ético',
+  scenes: ['LA RED', 'LA AMENAZA', 'EL ATAQUE', 'LA DEFENSA', 'EL FACTOR HUMANO', 'EL FUTURO'],
+  hint: 'DESPLÁZATE PARA VIAJAR',
+  soundOn: 'SONIDO ACTIVO', soundOff: 'SONIDO APAGADO',
+  ctaEnter: 'VER EL TRABAJO', ctaMail: 'HABLEMOS',
+  skip: 'Ir a la versión en texto',
+  riskLabel: 'NIVEL DE RIESGO: ',
+  caseStudy: 'PROYECTO',
+  explore: 'CLIC PARA EXPLORAR', exploreTouch: 'TOCA PARA EXPLORAR',
+  openCase: 'ABRIR PROYECTO', close: 'CERRAR',
+
+  beats: {
+    'intro-a':  { h: 'El mundo digital nunca duerme.' },
+    'intro-b':  { h: 'Las amenazas tampoco.' },
+    'net':      { kicker: '01 — La red', h: 'Miles de millones de conexiones.', sub: 'Dispositivos, personas, servicios. Cada enlace es una decisión de confiar en algo.' },
+    'net2':     { h: 'Estás dentro.' },
+    'threat':   { kicker: '02 — La amenaza', h: 'Algo ha cambiado.' },
+    'threat2':  { h: 'Un dispositivo desconocido.', sub: 'Se comporta casi como los demás. Casi.' },
+    'attack':   { kicker: '03 — El ataque', h: 'Solo necesita un camino.' },
+    'breach':   { h: 'Una brecha lo cambia todo.' },
+    'detected': { kicker: '04 — La defensa', h: 'Amenaza detectada.' },
+    'contained':{ h: 'Amenaza contenida.' },
+    'human':    { kicker: '05 — El factor humano', h: 'Detrás de cada dispositivo<br />hay una persona.', terms: ['Identidad', 'Confianza', 'Concienciación', 'Error humano'] },
+    'wall':     { kicker: '06 — El futuro', h: 'La seguridad no es un muro.' },
+    'living':   { h: 'Es un sistema vivo.' }
+  },
+
+  labels: [
+    { t: 'PHISHING',              d: 'un camino de confianza, desviado' },
+    { t: 'ROBO DE CREDENCIALES',  d: 'una identidad conocida, actuando como otra' },
+    { t: 'RANSOMWARE',            d: 'nodos conectados, aislados por la fuerza' },
+    { t: 'CADENA DE SUMINISTRO',  d: 'llegó firmado' },
+    { t: 'AMENAZA INTERNA',       d: 'dentro, por definición' },
+    { t: 'ZERO-DAY',              d: 'todavía no existe la firma' },
+    { t: 'USUARIO', d: '' }, { t: 'ENDPOINT', d: '' }, { t: 'APLICACIÓN', d: '' },
+    { t: 'SERVIDOR', d: '' }, { t: 'BASE DE DATOS', d: '' },
+    { t: 'DETECCIÓN', d: '' }, { t: 'MONITORIZACIÓN', d: '' }, { t: 'IDENTIDAD', d: '' },
+    { t: 'PROTECCIÓN DE ENDPOINT', d: '' }, { t: 'SEGURIDAD DE RED', d: '' },
+    { t: 'INTELIGENCIA DE AMENAZAS', d: '' }, { t: 'RESPUESTA A INCIDENTES', d: '' }, { t: 'ZERO TRUST', d: '' }
+  ],
+
+  poi: [
+    { name: 'ENDPOINT',           meta: 'Portátil gestionado · EDR activo',            risk: 'BAJO' },
+    { name: 'SERVIDOR',           meta: 'Entorno de producción · superficie pública',  risk: 'MEDIO' },
+    { name: 'IDENTIDAD',          meta: 'Proveedor SSO · 4.200 sesiones activas',      risk: 'BAJO' },
+    { name: 'ALMACÉN DE DATOS',   meta: 'Datos de clientes · cifrado en reposo',       risk: 'MEDIO' },
+    { name: 'NODO DESCONOCIDO',   meta: 'Actividad saliente inusual · no gestionado',  risk: 'ALTO' }
+  ],
+
+  projects: [
+    { idx: 'PROYECTO 01', title: 'Portcullis', tag: 'Gateway de seguridad MCP',
+      body: 'Un gateway que se sitúa entre un agente de IA y sus servidores MCP. Autoriza cada llamada a herramienta, fija las definiciones para detectar una herramienta reescrita en silencio —rug-pull, tool shadowing— antes de que se ejecute, aplica el alcance permitido y escribe una auditoría solo de anexado.',
+      facts: ['TypeScript', 'SDK de MCP', 'Autorización por herramienta', 'Detección de rug-pull'],
+      status: 'Código abierto', link: 'https://github.com/ivanzubizarretavazquez' },
+    { idx: 'PROYECTO 02', title: 'Stricture', tag: 'Escáner de mínimo privilegio para agentes de IA',
+      body: 'Analiza configuraciones MCP enteramente en el navegador —la configuración nunca sale del equipo—, mapea qué agente alcanza qué herramientas, señala conexiones sobre-permisionadas, raíces del sistema de ficheros, paquetes sin fijar y secretos en texto plano, y exporta un informe de auditoría firmado y verificable.',
+      facts: ['Next.js', 'Firma Ed25519', 'Análisis en cliente', 'Nota A–F'],
+      status: 'Código abierto', link: 'https://github.com/ivanzubizarretavazquez' },
+    { idx: 'PROYECTO 03', title: 'Custodia', tag: 'Cadena de custodia para investigación OSINT',
+      body: 'Cuaderno de pruebas para investigaciones. Cada elemento se sella con su fuente, una huella SHA-256 y una firma Ed25519, y la herramienta mantiene separado de forma estricta lo observado de lo inferido. El acceso es privado: TLS mutuo con certificado de cliente no exportable más una passkey.',
+      facts: ['Next.js', 'mTLS + WebAuthn', 'Detección de manipulación', 'Observado vs inferido'],
+      status: 'Despliegue privado', link: '' },
+    { idx: 'PROYECTO 04', title: 'Aegis', tag: 'Reconocimiento e inteligencia de amenazas',
+      body: 'Plataforma multiempresa para descubrimiento de superficie de ataque: enumeración de subdominios, detección de DNS wildcard e histórico de escaneos por dominio, presentado como una sala de mapas donde cada activo es un nodo sobre el que actuar, no una fila de una tabla.',
+      facts: ['Laravel', 'Multiempresa', 'Descubrimiento de subdominios', 'Sala de mapas'],
+      status: 'Despliegue privado', link: '' }
+  ],
+
+  outro: {
+    eyebrow: 'Quien ha construido esto',
+    h2: 'Iván Zubizarreta',
+    role: 'Analista de ciberseguridad — seguridad ofensiva y hacking ético',
+    lede: 'Técnico de sistemas y ciberseguridad, formado desde la base: sistemas microinformáticos y redes, después administración de sistemas informáticos en red, y un máster en dirección de ciberseguridad, hacking ético y seguridad ofensiva. Construyo las herramientas que yo querría usar —evidencias firmadas, mínimo privilegio, agentes auditables— y me interesa especialmente la parte del trabajo que empieza cuando salta la alerta.',
+    quick: [
+      { t: 'Madrid, España' },
+      { t: '+34 643 998 294', href: 'tel:+34643998294' },
+      { t: 'iazv.ivan@gmail.com', href: 'mailto:iazv.ivan@gmail.com' },
+      { t: 'LinkedIn', href: 'https://www.linkedin.com/in/i-zubizarreta' }
+    ],
+
+    workTitle: 'Trabajo seleccionado',
+    workLede: 'Cuatro herramientas, todas funcionando. Problemas de seguridad con los que me topé y decidí resolver bien.',
+
+    credsTitle: 'Titulaciones',
+    creds: [
+      {
+        inst: 'EIP INTERNATIONAL BUSINESS SCHOOL', state: 'FINALIZADO · JUNIO 2026',
+        title: 'Máster Profesional en Dirección de Ciberseguridad, Hacking Ético y Seguridad Ofensiva',
+        fields: [
+          { k: 'Carga lectiva', v: '1.700 horas' },
+          { k: 'Créditos', v: '68 ECTS' },
+          { k: 'Finalizado', v: '3 de junio de 2026' },
+          { k: 'Nº de registro', v: 'MDCHESO/EIP_2026_533' }
+        ],
+        moreLabel: 'Contenido del programa',
+        modules: [
+          { h: 'Seguridad ofensiva', items: ['Hacking ético', 'Criptología', 'Seguridad ofensiva', 'Ciberinteligencia y ciberamenazas', 'Investigación en deep web y dark web', 'Pruebas de seguridad avanzadas (incl. OT/IoT)'] },
+          { h: 'Seguridad defensiva', items: ['Arquitectura de ciberseguridad', 'Ciberseguridad y tecnologías disruptivas', 'Estrategia de ciberseguridad', 'Gestión de crisis y ciberresiliencia', 'Gestión de riesgos', 'Equipos de respuesta ante ciberincidentes (Blue Team)', 'Gobierno y gestión de seguridad TI', 'Normativa y legislación', 'Seguridad en desarrollo software', 'Identificación, prevención, protección, respuesta y recuperación'] },
+          { h: 'Transversal', items: ['Estrategia de marca personal en ciberseguridad', 'Habilidades directivas', 'Preparación para certificación internacional de inglés', 'Proyecto fin de máster'] }
+        ]
+      },
+      {
+        inst: 'CEAC FP', state: 'EN CURSO · DESDE 2025',
+        title: 'Grado Superior en Administración de Sistemas Informáticos en Red (ASIR)',
+        fields: [{ k: 'Nivel', v: 'FP de grado superior · MECES 1' }, { k: 'Enfoque', v: 'Servidores, redes, virtualización' }],
+        moreLabel: '', modules: []
+      },
+      {
+        inst: 'IES PALOMERAS VALLECAS', state: 'FINALIZADO · 2024',
+        title: 'Grado Medio en Sistemas Microinformáticos y Redes (SMR)',
+        fields: [{ k: 'Periodo', v: '2022 — 2024' }, { k: 'Enfoque', v: 'Sistemas, hardware, redes' }],
+        moreLabel: '', modules: []
+      }
+    ],
+    credsNote: 'Certificados y números de registro disponibles a petición, verificables directamente con cada centro.',
+
+    careerTitle: 'Experiencia',
+    career: [
+      { when: '2025 — Actualidad', title: 'Responsable de caja', org: 'Corral de la Morería, Madrid',
+        body: 'Gestión de la caja y control de las operaciones diarias —arqueos, cuadre y cierre— garantizando la exactitud financiera en uno de los tablaos flamencos más reconocidos internacionalmente. Ahí aprendí que un proceso vale lo que vale su peor noche.' },
+      { when: '2024 — 2025', title: 'Encargado de establecimiento', org: 'Restauración',
+        body: 'Supervisión y coordinación de la operativa diaria: gestión y formación del equipo, planificación de turnos, control de stock y pedidos, apertura y cierre, y calidad del servicio. Responsabilidad sobre personas y sobre números a la vez.' },
+      { when: '2024', title: 'Sistema de control de acceso', org: 'Kubernesys',
+        body: 'Diseño e implementación de un sistema de control de acceso: el dispositivo físico y la aplicación web de gestión, con la seguridad y la conectividad remota como restricciones de diseño.' }
+    ],
+
+    skillsTitle: 'Capacidades',
+    skillGroups: [
+      { h: 'Seguridad', chips: ['Hacking ético y pentesting', 'Seguridad ofensiva', 'Análisis de vulnerabilidades', 'Respuesta a incidentes (Blue Team)', 'Ciberinteligencia y OSINT', 'Desarrollo seguro'], key: 2 },
+      { h: 'Sistemas y redes', chips: ['Linux', 'Windows', 'Administración de sistemas', 'Redes', 'VPS · Nginx · pm2', 'Cloudflare · certbot'], key: 0 },
+      { h: 'Ingeniería', chips: ['TypeScript', 'Node.js', 'Next.js / React', 'Laravel / PHP', 'Python', 'MySQL / SQLite', 'Ed25519 · SHA-256', 'mTLS · WebAuthn'], key: 0 },
+      { h: 'Con personas', chips: ['Liderazgo de equipos', 'Gestión de operaciones', 'Aprendizaje rápido', 'Español (nativo)', 'Inglés (B2)'], key: 0 }
+    ],
+
+    contactH: 'Hablemos.',
+    contactNote: 'Abierto a puestos de ciberseguridad y a construir herramientas para equipos que las necesiten.',
+    ways: [
+      { t: 'iazv.ivan@gmail.com', href: 'mailto:iazv.ivan@gmail.com' },
+      { t: '+34 643 998 294', href: 'tel:+34643998294' },
+      { t: 'linkedin.com/in/i-zubizarreta', href: 'https://www.linkedin.com/in/i-zubizarreta' },
+      { t: 'github.com/ivanzubizarretavazquez', href: 'https://github.com/ivanzubizarretavazquez' }
+    ],
+    colophon: ['Hecho con Three.js. Sin rastreadores ni cookies.', 'Madrid — 2026']
+  }
+}
+};
+
+</script>
 <script>
 /* ============================================================================
    A LIVING SYSTEM — immersive cybersecurity portfolio
@@ -506,13 +850,14 @@ var SCENES = [
 /* Corridor the camera travels through */
 var Z_NEAR = 40, Z_FAR = -980;
 
-/* Interactive nodes. kind: 3 = project world, 1/2 = infrastructure */
+/* Geometry only — every string lives in content.js.
+   kind: 1/2 infrastructure · 3 project world · 4 the anomaly */
 var POI = [
-  { pos: [-26,  10,  -18], kind: 1, name: 'ENDPOINT',     meta: 'Managed laptop · EDR active', risk: 'LOW' },
-  { pos: [ 30,  -8,  -62], kind: 2, name: 'SERVER',       meta: 'Production environment · public surface', risk: 'MEDIUM' },
-  { pos: [-18, -16, -128], kind: 1, name: 'IDENTITY',     meta: 'SSO provider · 4.2k active sessions', risk: 'LOW' },
-  { pos: [ 22,  16, -196], kind: 2, name: 'DATA STORE',   meta: 'Customer records · encrypted at rest', risk: 'MEDIUM' },
-  { pos: [ -8,  22, -262], kind: 4, name: 'UNKNOWN NODE', meta: 'Unusual outbound activity · unmanaged', risk: 'HIGH' },
+  { pos: [-26,  10,  -18], kind: 1, info: 0 },
+  { pos: [ 30,  -8,  -62], kind: 2, info: 1 },
+  { pos: [-18, -16, -128], kind: 1, info: 2 },
+  { pos: [ 22,  16, -196], kind: 2, info: 3 },
+  { pos: [ -8,  22, -262], kind: 4, info: 4 },
 
   { pos: [ 34,   6,  -34], kind: 3, project: 0 },
   { pos: [-34,  -4, -100], kind: 3, project: 1 },
@@ -520,61 +865,36 @@ var POI = [
   { pos: [-28,  14, -222], kind: 3, project: 3 }
 ];
 
-var PROJECTS = [
-  {
-    idx: 'PROJECT 01', title: 'Portcullis',
-    tag: 'MCP security gateway',
-    body: 'A gateway that sits between an AI agent and its MCP servers. It authorises every tool call, pins tool definitions so a silently rewritten tool (rug-pull, tool shadowing) is caught before it runs, enforces scope, and writes an append-only JSONL audit trail.',
-    facts: ['TypeScript', 'MCP SDK', 'Per-tool authorisation', 'Rug-pull detection'],
-    link: 'https://github.com/ivanzubizarretavazquez'
-  },
-  {
-    idx: 'PROJECT 02', title: 'Stricture',
-    tag: 'Least-privilege scanner for AI agents',
-    body: 'Scans MCP configurations entirely in the browser — the config never leaves the machine — maps which agent reaches which tools, flags over-permissioned connections, filesystem roots, unpinned packages and plaintext secrets, and exports a signed audit report anyone can verify.',
-    facts: ['Next.js', 'Ed25519 signing', 'Client-side analysis', 'A–F grading'],
-    link: 'https://github.com/ivanzubizarretavazquez'
-  },
-  {
-    idx: 'PROJECT 03', title: 'Custodia',
-    tag: 'Chain of custody for OSINT work',
-    body: 'Evidence notebook for investigations. Every item is sealed with its source, a SHA-256 fingerprint and an Ed25519 signature, and the tool keeps observed facts strictly separate from inferred ones. Access is private: mutual TLS with a non-exportable client certificate plus a passkey.',
-    facts: ['Next.js', 'mTLS + WebAuthn', 'Tamper detection', 'Observed vs inferred'],
-    link: ''
-  },
-  {
-    idx: 'PROJECT 04', title: 'Aegis',
-    tag: 'Reconnaissance and cyber intelligence',
-    body: 'Multi-tenant platform for attack-surface discovery: subdomain enumeration, wildcard DNS detection and per-domain scan history, presented as a map room where each asset is a node you can act on rather than a row in a table.',
-    facts: ['Laravel', 'Multi-tenant', 'Subdomain discovery', 'Map room'],
-    link: ''
-  }
-];
+var PROJECTS = [];   // filled by applyLang()
 
-/* Spatial labels: concepts anchored in space, revealed by progress */
+/* Spatial anchors: where each concept sits in the universe and when it exists */
 var LABELS = [
-  { t: 'PHISHING',           d: 'a trusted path, redirected',      pos: [ 26,  14, -250], p0: 0.245, p1: 0.315 },
-  { t: 'CREDENTIAL THEFT',   d: 'a known identity, acting unknown', pos: [-30,  -6, -272], p0: 0.258, p1: 0.330 },
-  { t: 'RANSOMWARE',         d: 'connected nodes, locked apart',   pos: [ 12, -22, -300], p0: 0.285, p1: 0.352 },
-  { t: 'SUPPLY CHAIN',       d: 'it arrived signed',               pos: [-20,  20, -324], p0: 0.305, p1: 0.372 },
-  { t: 'INSIDER',            d: 'inside, by definition',           pos: [ 30,  -2, -348], p0: 0.325, p1: 0.392 },
-  { t: 'ZERO-DAY',           d: 'no signature exists yet',         pos: [ -6,  10, -372], p0: 0.345, p1: 0.410 },
+  { pos: [ 26,  14, -250], p0: 0.245, p1: 0.315 },
+  { pos: [-30,  -6, -272], p0: 0.258, p1: 0.330 },
+  { pos: [ 12, -22, -300], p0: 0.285, p1: 0.352 },
+  { pos: [-20,  20, -324], p0: 0.305, p1: 0.372 },
+  { pos: [ 30,  -2, -348], p0: 0.325, p1: 0.392 },
+  { pos: [ -6,  10, -372], p0: 0.345, p1: 0.410 },
 
-  { t: 'USER',        d: '', pos: [-34,   6, -430], p0: 0.430, p1: 0.560 },
-  { t: 'ENDPOINT',    d: '', pos: [-14,  -8, -470], p0: 0.446, p1: 0.560 },
-  { t: 'APPLICATION', d: '', pos: [  8,  12, -510], p0: 0.462, p1: 0.560 },
-  { t: 'SERVER',      d: '', pos: [ 26,  -6, -548], p0: 0.478, p1: 0.560 },
-  { t: 'DATABASE',    d: '', pos: [ 40,   8, -586], p0: 0.494, p1: 0.560 },
+  { pos: [-34,   6, -430], p0: 0.430, p1: 0.560 },
+  { pos: [-14,  -8, -470], p0: 0.446, p1: 0.560 },
+  { pos: [  8,  12, -510], p0: 0.462, p1: 0.560 },
+  { pos: [ 26,  -6, -548], p0: 0.478, p1: 0.560 },
+  { pos: [ 40,   8, -586], p0: 0.494, p1: 0.560 },
 
-  { t: 'DETECTION',          d: '', pos: [ 34,  18, -618], p0: 0.618, p1: 0.700 },
-  { t: 'MONITORING',         d: '', pos: [-36,  10, -628], p0: 0.628, p1: 0.706 },
-  { t: 'IDENTITY',           d: '', pos: [ 20, -24, -640], p0: 0.638, p1: 0.712 },
-  { t: 'ENDPOINT PROTECTION',d: '', pos: [-24, -20, -652], p0: 0.648, p1: 0.718 },
-  { t: 'NETWORK SECURITY',   d: '', pos: [ 38,  -4, -664], p0: 0.658, p1: 0.724 },
-  { t: 'THREAT INTELLIGENCE',d: '', pos: [-40,   0, -676], p0: 0.668, p1: 0.730 },
-  { t: 'INCIDENT RESPONSE',  d: '', pos: [ 10,  26, -688], p0: 0.678, p1: 0.736 },
-  { t: 'ZERO TRUST',         d: '', pos: [-12,  24, -700], p0: 0.688, p1: 0.744 }
+  { pos: [ 34,  18, -618], p0: 0.618, p1: 0.700 },
+  { pos: [-36,  10, -628], p0: 0.628, p1: 0.706 },
+  { pos: [ 20, -24, -640], p0: 0.638, p1: 0.712 },
+  { pos: [-24, -20, -652], p0: 0.648, p1: 0.718 },
+  { pos: [ 38,  -4, -664], p0: 0.658, p1: 0.724 },
+  { pos: [-40,   0, -676], p0: 0.668, p1: 0.730 },
+  { pos: [ 10,  26, -688], p0: 0.678, p1: 0.736 },
+  { pos: [-12,  24, -700], p0: 0.688, p1: 0.744 }
 ];
+
+/* Language ---------------------------------------------------------------- */
+var LANG = (navigator.language || 'en').toLowerCase().indexOf('es') === 0 ? 'es' : 'en';
+function T() { return CONTENT[LANG]; }
 
 /* Camera keyframes: position + look-at, sampled by scroll progress */
 var KEYS = [
@@ -635,7 +955,8 @@ var body = document.body;
 if (!probeWebGL() || !window.THREE) {
   body.classList.add('nogl');
   body.classList.remove('is-loading');
-  buildFallbackProjects();
+  setupLang();
+  applyLang(LANG);
   if (loader) { loader.classList.add('done'); }
   return;
 }
@@ -1390,21 +1711,46 @@ if (COARSE) {
 /* ============================================================================
    6. UI — beats, spatial labels, navigation, audio, loader
    ========================================================================== */
+var statements = document.getElementById('statements');
 var beatEls = {};
-document.querySelectorAll('.beat').forEach(function (el) { beatEls[el.dataset.beat] = el; });
 var whiteout = document.getElementById('whiteout');
 var ctaEl = document.getElementById('cta');
 var sceneLabel = document.getElementById('scenelabel');
 var hintEl = document.getElementById('hint');
 
-/* Spatial labels */
+function buildBeats() {
+  if (!statements) return;
+  statements.innerHTML = '';
+  beatEls = {};
+  var copy = T().beats;
+  for (var i = 0; i < BEATS.length; i++) {
+    var key = BEATS[i][0], c = copy[key];
+    if (!c) continue;
+    var el = document.createElement('div');
+    var isLong = c.h.indexOf('<br') >= 0 || c.h.length > 30;
+    el.className = 'beat' + (isLong ? ' tight' : '');
+    el.dataset.beat = key;
+    var html = '';
+    if (c.kicker) html += '<span class="kicker">' + c.kicker + '</span>';
+    html += '<h2>' + c.h + '</h2>';
+    if (c.sub) html += '<p class="sub">' + c.sub + '</p>';
+    if (c.terms) {
+      html += '<div class="terms">' + c.terms.map(function (t) { return '<span>' + t + '</span>'; }).join('') + '</div>';
+    }
+    el.innerHTML = html;
+    el.style.opacity = 0;
+    el._o = 0;
+    statements.appendChild(el);
+    beatEls[key] = el;
+  }
+}
+
+/* Spatial labels: one DOM node per anchor, text swapped by language */
 var spatial = document.getElementById('spatial');
 var labelEls = LABELS.map(function (L) {
   var el = document.createElement('div');
   el.className = 'slabel';
-  el.innerHTML = '<div class="line"></div><div class="t"></div>' + (L.d ? '<div class="d"></div>' : '');
-  el.querySelector('.t').textContent = L.t;
-  if (L.d) el.querySelector('.d').textContent = L.d;
+  el.innerHTML = '<div class="line"></div><div class="t"></div><div class="d"></div>';
   spatial.appendChild(el);
   L.v = new THREE.Vector3(L.pos[0], L.pos[1], L.pos[2]);
   L.shown = false;
@@ -1413,13 +1759,12 @@ var labelEls = LABELS.map(function (L) {
 
 /* Navigation */
 var nav = document.getElementById('nav');
-var navBtns = SCENES.map(function (s, i) {
+var navBtns = SCENES.map(function (sc, i) {
   var b = document.createElement('button');
   b.className = 'navbtn';
   b.type = 'button';
-  b.setAttribute('aria-label', s.id + ' — ' + s.name);
-  b.innerHTML = '<span class="name">' + s.name + '</span><span class="num">' + s.id + '</span><span class="bar"></span>';
-  b.addEventListener('click', function () { goTo(s.p0 + (s.p1 - s.p0) * 0.18); });
+  b.innerHTML = '<span class="name"></span><span class="num">' + sc.id + '</span><span class="bar"></span>';
+  b.addEventListener('click', function () { goTo(sc.p0 + (sc.p1 - sc.p0) * 0.18); });
   nav.appendChild(b);
   return b;
 });
@@ -1435,85 +1780,381 @@ document.getElementById('ctaEnter').addEventListener('click', function (e) {
   if (el) el.scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth' });
 });
 
-/* Audio — never autoplays, built from oscillators so there is nothing to load */
+/* --------------------------------------------------------------------------
+   AmbientEngine — generative score, synthesised live. No files, no samples,
+   nothing to license. It breathes with the scroll: the pad always holds the
+   room, the sequence only wakes up while you are travelling.
+   Never autoplays; the sound button is the only way in.
+   -------------------------------------------------------------------------- */
 var audio = (function () {
-  var ctx = null, master = null, on = false, nodesList = [];
+  var ctx = null, ready = false, on = false;
+  var master, wet, dry, padFilter, padGain, arpGain, bassGain, bass, voices = [];
+  var energy = 0, targetEnergy = 0, scene = 0, duck = 1, arpTimer = null, step = 0;
+
+  function midi(m) { return 440 * Math.pow(2, (m - 69) / 12); }
+
+  /* one chord per environment — the harmony *is* the narrative */
+  var CHORDS = [
+    { pad: [45, 52, 57, 60, 64],     arp: [69, 72, 76, 79, 84],     rate: 0.50 }, // network  · Am add9
+    { pad: [41, 47, 53, 60, 65],     arp: [65, 71, 72, 77, 83],     rate: 0.44 }, // threat   · tritone tension
+    { pad: [38, 45, 50, 57, 62],     arp: [62, 69, 72, 74, 81],     rate: 0.26 }, // attack   · D modal, urgent
+    { pad: [36, 43, 48, 55, 64],     arp: [67, 72, 76, 79, 88],     rate: 0.38 }, // defense  · C major, resolving
+    { pad: [45, 57, 64, 69],         arp: [76, 81, 84],             rate: 0.86 }, // human    · almost nothing
+    { pad: [41, 48, 55, 60, 67, 72], arp: [72, 77, 79, 84, 89],     rate: 0.42 }  // future   · wide and open
+  ];
+
+  function impulse(seconds, decay) {
+    var rate = ctx.sampleRate, len = Math.floor(rate * seconds);
+    var buf = ctx.createBuffer(2, len, rate);
+    for (var c = 0; c < 2; c++) {
+      var d = buf.getChannelData(c);
+      for (var i = 0; i < len; i++) {
+        d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, decay);
+      }
+    }
+    return buf;
+  }
+
   function build() {
     var AC = window.AudioContext || window.webkitAudioContext;
     if (!AC) return false;
     ctx = new AC();
-    master = ctx.createGain();
-    master.gain.value = 0.0;
-    master.connect(ctx.destination);
-    var filter = ctx.createBiquadFilter();
-    filter.type = 'lowpass';
-    filter.frequency.value = 380;
-    filter.Q.value = 0.7;
-    filter.connect(master);
-    [55, 82.5, 110.3].forEach(function (f, i) {
-      var o = ctx.createOscillator();
-      o.type = i === 2 ? 'triangle' : 'sine';
-      o.frequency.value = f;
-      var g = ctx.createGain();
-      g.gain.value = i === 0 ? 0.5 : 0.18;
-      var lfo = ctx.createOscillator();
-      lfo.frequency.value = 0.05 + i * 0.03;
-      var lg = ctx.createGain();
-      lg.gain.value = 0.08;
-      lfo.connect(lg); lg.connect(g.gain);
-      o.connect(g); g.connect(filter);
-      o.start(); lfo.start();
-      nodesList.push(o, lfo);
-    });
+
+    master = ctx.createGain(); master.gain.value = 0;
+    var comp = ctx.createDynamicsCompressor();
+    comp.threshold.value = -22; comp.ratio.value = 4; comp.release.value = 0.35;
+    master.connect(comp); comp.connect(ctx.destination);
+
+    var verb = ctx.createConvolver();
+    verb.buffer = impulse(3.4, 2.6);
+    wet = ctx.createGain(); wet.gain.value = 0.55;
+    dry = ctx.createGain(); dry.gain.value = 0.75;
+    verb.connect(wet); wet.connect(master); dry.connect(master);
+
+    padFilter = ctx.createBiquadFilter();
+    padFilter.type = 'lowpass'; padFilter.frequency.value = 300; padFilter.Q.value = 1.1;
+    padGain = ctx.createGain(); padGain.gain.value = 0.30;
+    padFilter.connect(padGain); padGain.connect(dry); padGain.connect(verb);
+
+    /* pad voices: two detuned oscillators each, frequencies glide on scene change */
+    for (var v = 0; v < 6; v++) {
+      var g = ctx.createGain(); g.gain.value = 0;
+      var o1 = ctx.createOscillator(); o1.type = 'sawtooth';
+      var o2 = ctx.createOscillator(); o2.type = 'sine';
+      o1.detune.value = -6; o2.detune.value = 7;
+      var lfo = ctx.createOscillator(); lfo.frequency.value = 0.04 + v * 0.017;
+      var lg = ctx.createGain(); lg.gain.value = 4.5;
+      lfo.connect(lg); lg.connect(o1.detune);
+      o1.connect(g); o2.connect(g); g.connect(padFilter);
+      o1.start(); o2.start(); lfo.start();
+      voices.push({ g: g, o1: o1, o2: o2 });
+    }
+
+    /* sub: felt more than heard, rises with the attack */
+    bassGain = ctx.createGain(); bassGain.gain.value = 0;
+    bass = ctx.createOscillator(); bass.type = 'sine';
+    bass.frequency.value = midi(33);
+    bass.connect(bassGain); bassGain.connect(dry);
+    bass.start();
+
+    /* sequence bus */
+    var delay = ctx.createDelay(1.2);
+    delay.delayTime.value = 0.42;
+    var fb = ctx.createGain(); fb.gain.value = 0.34;
+    arpGain = ctx.createGain(); arpGain.gain.value = 0;
+    arpGain.connect(dry); arpGain.connect(verb);
+    arpGain.connect(delay); delay.connect(fb); fb.connect(delay); delay.connect(verb);
+
+    ready = true;
+    setChord(scene, 0.05);
+    schedule();
     return true;
   }
+
+  function setChord(i, glide) {
+    if (!ready) return;
+    var c = CHORDS[i] || CHORDS[0];
+    var t = ctx.currentTime, gl = glide === undefined ? 2.6 : glide;
+    for (var v = 0; v < voices.length; v++) {
+      var note = c.pad[v];
+      var voice = voices[v];
+      if (note === undefined) {
+        voice.g.gain.cancelScheduledValues(t);
+        voice.g.gain.linearRampToValueAtTime(0, t + gl);
+        continue;
+      }
+      var f = midi(note);
+      voice.o1.frequency.cancelScheduledValues(t);
+      voice.o2.frequency.cancelScheduledValues(t);
+      voice.o1.frequency.exponentialRampToValueAtTime(f, t + gl);
+      voice.o2.frequency.exponentialRampToValueAtTime(f * 2, t + gl);
+      voice.g.gain.cancelScheduledValues(t);
+      voice.g.gain.linearRampToValueAtTime(0.16 / (1 + v * 0.35), t + gl);
+    }
+    bass.frequency.cancelScheduledValues(t);
+    bass.frequency.exponentialRampToValueAtTime(midi(c.pad[0] - 12), t + gl);
+  }
+
+  function pluck(freq, when, level) {
+    var o = ctx.createOscillator(), g = ctx.createGain(), f = ctx.createBiquadFilter();
+    o.type = 'triangle'; o.frequency.value = freq;
+    f.type = 'bandpass'; f.frequency.value = freq * 1.8; f.Q.value = 2.2;
+    g.gain.setValueAtTime(0, when);
+    g.gain.linearRampToValueAtTime(level, when + 0.012);
+    g.gain.exponentialRampToValueAtTime(0.0001, when + 1.05);
+    o.connect(f); f.connect(g); g.connect(arpGain);
+    o.start(when); o.stop(when + 1.1);
+  }
+
+  /* the sequence only exists while the visitor is moving through the system */
+  function schedule() {
+    if (arpTimer) clearInterval(arpTimer);
+    var next = 0;
+    arpTimer = setInterval(function () {
+      if (!ready || !on) return;
+      var c = CHORDS[scene] || CHORDS[0];
+      var now = ctx.currentTime;
+      if (next < now) next = now + 0.05;
+      while (next < now + 0.4) {
+        var e = energy * duck;
+        if (e > 0.06 && Math.random() < 0.35 + e * 0.55) {
+          var n = c.arp[(step + (Math.random() < 0.3 ? 2 : 1)) % c.arp.length];
+          pluck(midi(n), next, 0.03 + e * 0.10);
+          if (Math.random() < e * 0.4) pluck(midi(n + 12), next + c.rate * 0.5, 0.015 + e * 0.04);
+        }
+        step++;
+        next += c.rate;
+      }
+    }, 90);
+  }
+
   return {
     toggle: function () {
       if (!ctx && !build()) return false;
       if (ctx.state === 'suspended') ctx.resume();
       on = !on;
-      master.gain.cancelScheduledValues(ctx.currentTime);
-      master.gain.linearRampToValueAtTime(on ? 0.075 : 0.0, ctx.currentTime + 0.9);
+      var t = ctx.currentTime;
+      master.gain.cancelScheduledValues(t);
+      master.gain.linearRampToValueAtTime(on ? 0.5 : 0.0, t + (on ? 1.6 : 0.7));
       return on;
     },
-    ping: function (freq, level) {
-      if (!on || !ctx) return;
-      var o = ctx.createOscillator(), g = ctx.createGain();
-      o.frequency.value = freq; o.type = 'sine';
-      g.gain.value = 0;
-      o.connect(g); g.connect(master);
+    isOn: function () { return on; },
+    setScene: function (i) {
+      if (i === scene) return;
+      scene = i;
+      if (ready && on) { setChord(i, 3.0); this.whoosh(); }
+      else scene = i;
+    },
+    /* energy = how fast the visitor is travelling; drives brightness and density */
+    frame: function (speed, p, dt) {
+      if (!ready || !on) return;
+      targetEnergy = clamp(speed * 26, 0, 1);
+      energy += (targetEnergy - energy) * Math.min(1, dt * 2.2);
+      /* the silence after the breach is part of the score */
+      duck = 1 - window4(p, 0.540, 0.566, 0.600, 0.640) * 0.92;
       var t = ctx.currentTime;
-      g.gain.linearRampToValueAtTime(level || 0.12, t + 0.02);
-      g.gain.exponentialRampToValueAtTime(0.0001, t + 1.2);
-      o.start(t); o.stop(t + 1.3);
+      padFilter.frequency.setTargetAtTime(230 + energy * 1500 + p * 520, t, 0.25);
+      padGain.gain.setTargetAtTime((0.20 + energy * 0.16) * duck, t, 0.3);
+      arpGain.gain.setTargetAtTime((0.10 + energy * 0.55) * duck, t, 0.2);
+      bassGain.gain.setTargetAtTime((0.05 + window4(p, 0.40, 0.46, 0.54, 0.60) * 0.16) * duck, t, 0.4);
+      wet.gain.setTargetAtTime(0.42 + (1 - energy) * 0.28, t, 0.5);
+    },
+    whoosh: function () {
+      if (!ready || !on) return;
+      var len = Math.floor(ctx.sampleRate * 1.6);
+      var buf = ctx.createBuffer(1, len, ctx.sampleRate);
+      var d = buf.getChannelData(0);
+      for (var i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 1.6);
+      var src = ctx.createBufferSource(); src.buffer = buf;
+      var f = ctx.createBiquadFilter(); f.type = 'bandpass'; f.Q.value = 3.5;
+      var g = ctx.createGain(); g.gain.value = 0.10;
+      var t = ctx.currentTime;
+      f.frequency.setValueAtTime(320, t);
+      f.frequency.exponentialRampToValueAtTime(2600, t + 1.4);
+      g.gain.exponentialRampToValueAtTime(0.0005, t + 1.5);
+      src.connect(f); f.connect(g); g.connect(wet);
+      src.start(t); src.stop(t + 1.6);
+    },
+    ping: function (freq, level) {
+      if (!ready || !on) return;
+      var t = ctx.currentTime;
+      pluck(freq, t + 0.01, level || 0.05);
     }
   };
 })();
+
 var audioBtn = document.getElementById('audio');
 audioBtn.addEventListener('click', function () {
   var on = audio.toggle();
   audioBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
-  audioBtn.textContent = on ? 'SOUND ON' : 'SOUND OFF';
+  audioBtn.textContent = on ? T().soundOn : T().soundOff;
 });
 
-/* Readable landing (also the no-WebGL fallback) */
-function buildFallbackProjects() {
-  var host = document.getElementById('fbProjects');
+/* --------------------------------------------------------------------------
+   The dossier — where the journey lands. Same content in both languages,
+   and the whole of it when WebGL is unavailable.
+   -------------------------------------------------------------------------- */
+function esc(x) { return String(x).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+
+function buildDossier() {
+  var host = document.getElementById('readable');
   if (!host) return;
-  PROJECTS.forEach(function (p) {
-    var w = document.createElement('div');
-    w.style.marginTop = '34px';
-    var link = p.link
-      ? ' <a href="' + p.link + '" target="_blank" rel="noopener">Open</a>'
-      : ' <span style="opacity:.5">Private</span>';
-    w.innerHTML = '<div class="k" style="margin-bottom:10px">' + p.idx + ' — ' + p.tag + '</div>' +
-      '<h2 style="font-size:clamp(22px,3vw,34px)">' + p.title + '</h2>' +
-      '<p>' + p.body + '</p>' +
-      '<p style="font-size:12px;letter-spacing:.14em;opacity:.6">' + p.facts.join(' · ') + link + '</p>';
-    host.appendChild(w);
+  var C = T(), O = C.outro, out = [];
+
+  out.push('<header class="dsr-head">');
+  out.push('<div class="eyebrow">' + esc(O.eyebrow) + '</div>');
+  out.push('<h2>' + esc(O.h2) + '</h2>');
+  out.push('<p class="lede">' + esc(O.role) + '</p>');
+  out.push('<p class="lede">' + esc(O.lede) + '</p>');
+  out.push('<div class="quick">' + O.quick.map(function (q) {
+    return q.href ? '<a href="' + q.href + '"' + (q.href.indexOf('http') === 0 ? ' target="_blank" rel="noopener"' : '') + '>' + esc(q.t) + '</a>' : '<span>' + esc(q.t) + '</span>';
+  }).join('') + '</div>');
+  out.push('</header>');
+
+  /* 07 — work: the journey ended at 06, so the dossier keeps counting */
+  out.push('<section class="sec"><div class="sec-h"><b>07</b><h3>' + esc(O.workTitle) + '</h3></div>');
+  out.push('<p class="lede" style="margin:-18px 0 34px">' + esc(O.workLede) + '</p>');
+  C.projects.forEach(function (p, i) {
+    out.push('<article class="work"><div class="no">' + String(i + 1).padStart(2, '0') + '</div><div>');
+    out.push('<h4>' + esc(p.title) + '</h4>');
+    out.push('<p class="tag">' + esc(p.tag) + '</p>');
+    out.push('<p>' + esc(p.body) + '</p>');
+    out.push('<div class="foot"><span class="st">' + esc(p.facts.join(' · ')) + '</span>');
+    out.push('<span class="st">' + esc(p.status) + '</span>');
+    if (p.link) out.push('<a href="' + p.link + '" target="_blank" rel="noopener">' + esc(C.openCase) + '</a>');
+    out.push('</div></div></article>');
+  });
+  out.push('</section>');
+
+  /* 08 — qualifications */
+  out.push('<section class="sec"><div class="sec-h"><b>08</b><h3>' + esc(O.credsTitle) + '</h3></div>');
+  O.creds.forEach(function (c) {
+    out.push('<article class="cred">');
+    out.push('<div class="top"><div class="inst">' + esc(c.inst) + '</div><div class="state"><i></i>' + esc(c.state) + '</div></div>');
+    out.push('<h4>' + esc(c.title) + '</h4>');
+    out.push('<div class="fields">' + c.fields.map(function (f) {
+      return '<div>' + esc(f.k) + ' &nbsp;<em>' + esc(f.v) + '</em></div>';
+    }).join('') + '</div>');
+    if (c.modules && c.modules.length) {
+      out.push('<details><summary>' + esc(c.moreLabel) + '</summary><div class="mods">');
+      c.modules.forEach(function (m) {
+        out.push('<div><h5>' + esc(m.h) + '</h5><ul>' + m.items.map(function (it) {
+          return '<li>' + esc(it) + '</li>';
+        }).join('') + '</ul></div>');
+      });
+      out.push('</div></details>');
+    }
+    out.push('</article>');
+  });
+  out.push('<p class="lede" style="font-size:12.5px;margin-top:22px">' + esc(O.credsNote) + '</p>');
+  out.push('</section>');
+
+  /* 09 — experience */
+  out.push('<section class="sec"><div class="sec-h"><b>09</b><h3>' + esc(O.careerTitle) + '</h3></div>');
+  O.career.forEach(function (e) {
+    out.push('<article class="entry"><div class="when">' + esc(e.when) + '</div><div>');
+    out.push('<h4>' + esc(e.title) + '</h4><p class="org">' + esc(e.org) + '</p><p>' + esc(e.body) + '</p>');
+    out.push('</div></article>');
+  });
+  out.push('</section>');
+
+  /* 10 — capabilities */
+  out.push('<section class="sec"><div class="sec-h"><b>10</b><h3>' + esc(O.skillsTitle) + '</h3></div><div class="cols">');
+  O.skillGroups.forEach(function (g) {
+    out.push('<div><h5>' + esc(g.h) + '</h5><div class="chips">' + g.chips.map(function (c, i) {
+      return '<span' + (i < (g.key || 0) ? ' class="key"' : '') + '>' + esc(c) + '</span>';
+    }).join('') + '</div></div>');
+  });
+  out.push('</div></section>');
+
+  /* contact */
+  out.push('<section class="sec"><div class="contact"><div>');
+  out.push('<p class="big">' + esc(O.contactH) + '</p>');
+  out.push('<p class="lede" style="font-size:14px;margin-top:18px">' + esc(O.contactNote) + '</p></div>');
+  out.push('<div class="ways">' + O.ways.map(function (w) {
+    return '<a href="' + w.href + '"' + (w.href.indexOf('http') === 0 ? ' target="_blank" rel="noopener"' : '') + '>' + esc(w.t) + '</a>';
+  }).join('') + '</div></div>');
+  out.push('<div class="colophon">' + O.colophon.map(function (c) { return '<span>' + esc(c) + '</span>'; }).join('') + '</div>');
+  out.push('</section>');
+
+  host.innerHTML = out.join('');
+}
+
+/* --------------------------------------------------------------------------
+   Language
+   -------------------------------------------------------------------------- */
+function applyLang(lang) {
+  LANG = lang;
+  var C = T();
+  document.documentElement.lang = lang;
+
+  PROJECTS = C.projects;
+  var infoIdx = 0;
+  for (var i = 0; i < POI.length; i++) {
+    if (POI[i].kind === 3) continue;
+    var src = C.poi[POI[i].info !== undefined ? POI[i].info : infoIdx++];
+    if (src) { POI[i].name = src.name; POI[i].meta = src.meta; POI[i].risk = src.risk; }
+  }
+
+  var role = document.getElementById('identityRole');
+  if (role) role.textContent = C.role;
+  var skip = document.getElementById('skipLink');
+  if (skip) skip.textContent = C.skip;
+  var ctaE = document.getElementById('ctaEnter'), ctaM = document.getElementById('ctaMail');
+  if (ctaE) ctaE.textContent = C.ctaEnter;
+  if (ctaM) ctaM.textContent = C.ctaMail;
+  var closeBtn = document.getElementById('projClose');
+  if (closeBtn) closeBtn.textContent = C.close;
+  var openLink = document.querySelector('#project .row a');
+  if (openLink) openLink.textContent = C.openCase;
+
+  var ab = document.getElementById('audio');
+  if (ab) ab.textContent = (typeof audio !== 'undefined' && audio.isOn && audio.isOn()) ? C.soundOn : C.soundOff;
+  if (typeof hintEl !== 'undefined' && hintEl) hintEl.textContent = C.hint;
+
+  if (typeof buildBeats === 'function' && document.getElementById('statements')) buildBeats();
+
+  if (typeof labelEls !== 'undefined' && labelEls) {
+    for (var l = 0; l < labelEls.length; l++) {
+      var lc = C.labels[l];
+      if (!lc) continue;
+      labelEls[l].querySelector('.t').textContent = lc.t;
+      var d = labelEls[l].querySelector('.d');
+      d.textContent = lc.d || '';
+      d.style.display = lc.d ? '' : 'none';
+    }
+  }
+
+  if (typeof navBtns !== 'undefined' && navBtns) {
+    navBtns.forEach(function (b, i) {
+      b.querySelector('.name').textContent = C.scenes[i];
+      b.setAttribute('aria-label', SCENES[i].id + ' — ' + C.scenes[i]);
+    });
+  }
+
+  document.querySelectorAll('#langswitch button').forEach(function (b) {
+    b.classList.toggle('on', b.dataset.lang === lang);
+  });
+
+  buildDossier();
+  var pp = document.getElementById('project');
+  if (pp) pp.classList.remove('open');
+
+  if (typeof lastScene !== 'undefined') lastScene = -1;   // force chrome refresh
+  if (typeof hovered !== 'undefined') hovered = -1;
+}
+
+function setupLang() {
+  document.querySelectorAll('#langswitch button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      if (b.dataset.lang === LANG) return;
+      applyLang(b.dataset.lang);
+    });
   });
 }
-buildFallbackProjects();
+
+setupLang();
+applyLang(LANG);
 
 /* Loader sequence */
 (function runLoader() {
@@ -1550,6 +2191,7 @@ buildFallbackProjects();
    7. LOOP
    ========================================================================== */
 var pTarget = 0, pNow = 0, lastScene = -1, pulsePlayed = false;
+var pPrev = 0, travelSpeed = 0;
 var proj = new THREE.Vector3();
 var vNdc = new THREE.Vector3(), vDir = new THREE.Vector3();
 var clock = new THREE.Clock();
@@ -1596,6 +2238,12 @@ function frame() {
   /* --- scroll smoothing: motion has to feel expensive --------------------- */
   pNow += (pTarget - pNow) * (REDUCED ? 0.5 : 1 - Math.pow(0.0009, dt));
   var p = pNow;
+
+  /* how fast the visitor is travelling — the score listens to this */
+  var inst = Math.abs(p - pPrev) / Math.max(dt, 0.001);
+  pPrev = p;
+  travelSpeed += (inst - travelSpeed) * 0.12;
+  audio.frame(travelSpeed, p, dt);
 
   /* --- narrative state ---------------------------------------------------- */
   U.uThreat.value  = smooth(range(p, 0.232, 0.320));
@@ -1696,16 +2344,17 @@ function frame() {
     lens.classList.toggle('hot', best >= 0);
     if (best >= 0) {
       var poi = POI[best];
+      var C = T();
       if (poi.kind === 3) {
         var pr = PROJECTS[poi.project];
         iName.textContent = pr.idx;
         iMeta.textContent = pr.title + ' — ' + pr.tag;
-        iRisk.textContent = 'CASE STUDY';
-        iMore.textContent = COARSE ? 'TAP TO EXPLORE' : 'CLICK TO EXPLORE';
+        iRisk.textContent = C.caseStudy;
+        iMore.textContent = COARSE ? C.exploreTouch : C.explore;
       } else {
         iName.textContent = poi.name;
         iMeta.textContent = poi.meta;
-        iRisk.textContent = 'RISK LEVEL: ' + poi.risk;
+        iRisk.textContent = C.riskLabel + poi.risk;
         iMore.textContent = '';
       }
       audio.ping(660, 0.05);
@@ -1724,9 +2373,9 @@ function frame() {
   for (var si = 0; si < SCENES.length; si++) if (p >= SCENES[si].p0) sc = si;
   if (sc !== lastScene) {
     lastScene = sc;
-    sceneLabel.textContent = SCENES[sc].id + ' — ' + SCENES[sc].name;
+    sceneLabel.textContent = SCENES[sc].id + ' — ' + T().scenes[sc];
     navBtns.forEach(function (b, i) { b.classList.toggle('active', i === sc); });
-    audio.ping(180 + sc * 40, 0.05);
+    audio.setScene(sc);
   }
   if (p > 0.02 && hintEl.style.opacity !== '0') hintEl.style.opacity = '0';
 
