@@ -429,7 +429,7 @@ body.landed #nav,body.landed #hud,body.landed #identity,body.landed #lens,body.l
 
 <div id="cta">
   <a class="action primary" href="#readable" id="ctaEnter"></a>
-  <a class="action" id="ctaMail" href="mailto:iazv.ivan@gmail.com"></a>
+  <a class="action" id="ctaMail" href="#" data-p="mail"></a>
 </div>
 
 <!-- ================= INSTRUMENTS ================= -->
@@ -563,8 +563,8 @@ en: {
     lede: 'Systems and cybersecurity technician, trained from the ground up: microcomputer systems and networks, then network systems administration, then a master\'s in cybersecurity management, ethical hacking and offensive security. I build the tools I would want to use — signed evidence, least privilege, agents that can be audited — and I care about the part of the job that happens after the alert fires.',
     quick: [
       { t: 'Madrid, Spain' },
-      { t: '+34 643 998 294', href: 'tel:+34643998294' },
-      { t: 'iazv.ivan@gmail.com', href: 'mailto:iazv.ivan@gmail.com' },
+      { t: 'Email me', protect: 'mail' },
+      { t: 'Call me', protect: 'tel' },
       { t: 'LinkedIn', href: 'https://www.linkedin.com/in/i-zubizarreta' }
     ],
 
@@ -625,8 +625,8 @@ en: {
     contactH: 'Let\'s talk.',
     contactNote: 'Open to cybersecurity roles and to building tools for teams who need them.',
     ways: [
-      { t: 'iazv.ivan@gmail.com', href: 'mailto:iazv.ivan@gmail.com' },
-      { t: '+34 643 998 294', href: 'tel:+34643998294' },
+      { t: 'Email me', protect: 'mail' },
+      { t: 'Call me', protect: 'tel' },
       { t: 'linkedin.com/in/i-zubizarreta', href: 'https://www.linkedin.com/in/i-zubizarreta' },
       { t: 'github.com/ivanzubizarretavazquez', href: 'https://github.com/ivanzubizarretavazquez' }
     ],
@@ -713,8 +713,8 @@ es: {
     lede: 'Técnico de sistemas y ciberseguridad, formado desde la base: sistemas microinformáticos y redes, después administración de sistemas informáticos en red, y un máster en dirección de ciberseguridad, hacking ético y seguridad ofensiva. Construyo las herramientas que yo querría usar —evidencias firmadas, mínimo privilegio, agentes auditables— y me interesa especialmente la parte del trabajo que empieza cuando salta la alerta.',
     quick: [
       { t: 'Madrid, España' },
-      { t: '+34 643 998 294', href: 'tel:+34643998294' },
-      { t: 'iazv.ivan@gmail.com', href: 'mailto:iazv.ivan@gmail.com' },
+      { t: 'Escríbeme', protect: 'mail' },
+      { t: 'Llámame', protect: 'tel' },
       { t: 'LinkedIn', href: 'https://www.linkedin.com/in/i-zubizarreta' }
     ],
 
@@ -775,8 +775,8 @@ es: {
     contactH: 'Hablemos.',
     contactNote: 'Abierto a puestos de ciberseguridad y a construir herramientas para equipos que las necesiten.',
     ways: [
-      { t: 'iazv.ivan@gmail.com', href: 'mailto:iazv.ivan@gmail.com' },
-      { t: '+34 643 998 294', href: 'tel:+34643998294' },
+      { t: 'Escríbeme por correo', protect: 'mail' },
+      { t: 'Llámame', protect: 'tel' },
       { t: 'linkedin.com/in/i-zubizarreta', href: 'https://www.linkedin.com/in/i-zubizarreta' },
       { t: 'github.com/ivanzubizarretavazquez', href: 'https://github.com/ivanzubizarretavazquez' }
     ],
@@ -1996,6 +1996,35 @@ audioBtn.addEventListener('click', function () {
    -------------------------------------------------------------------------- */
 function esc(x) { return String(x).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
 
+/* --------------------------------------------------------------------------
+   Personal channels. The address and the number are never written into the
+   document — not as text, not as an href. They are assembled in the browser
+   and only attached after a human hovers, focuses or taps the link, so a
+   crawler scraping the served HTML finds nothing to harvest.
+   -------------------------------------------------------------------------- */
+var CH = { mail: ['aWF6di5pdmFu', 'Z21haWwuY29t'], tel: ['KzM0NjQzOTk4Mjk0'] };
+function reveal(kind) {
+  try {
+    if (kind === 'mail') return 'mailto:' + atob(CH.mail[0]) + String.fromCharCode(64) + atob(CH.mail[1]);
+    if (kind === 'tel')  return 'tel:' + atob(CH.tel[0]);
+  } catch (e) {}
+  return '#';
+}
+function armContacts(root) {
+  (root || document).querySelectorAll('a[data-p]').forEach(function (a) {
+    if (a._armed) return;
+    a._armed = true;
+    var kind = a.getAttribute('data-p');
+    var arm = function () { if (a.getAttribute('href') === '#') a.setAttribute('href', reveal(kind)); };
+    a.addEventListener('mouseenter', arm);
+    a.addEventListener('focus', arm);
+    a.addEventListener('touchstart', arm, { passive: true });
+    a.addEventListener('click', function (e) {
+      if (a.getAttribute('href') === '#') { e.preventDefault(); window.location.href = reveal(kind); }
+    });
+  });
+}
+
 function buildDossier() {
   var host = document.getElementById('readable');
   if (!host) return;
@@ -2007,7 +2036,8 @@ function buildDossier() {
   out.push('<p class="lede">' + esc(O.role) + '</p>');
   out.push('<p class="lede">' + esc(O.lede) + '</p>');
   out.push('<div class="quick">' + O.quick.map(function (q) {
-    return q.href ? '<a href="' + q.href + '"' + (q.href.indexOf('http') === 0 ? ' target="_blank" rel="noopener"' : '') + '>' + esc(q.t) + '</a>' : '<span>' + esc(q.t) + '</span>';
+    if (q.protect) return '<a href="#" data-p="' + q.protect + '">' + esc(q.t) + '</a>';
+    return q.href ? '<a href="' + q.href + '" target="_blank" rel="noopener">' + esc(q.t) + '</a>' : '<span>' + esc(q.t) + '</span>';
   }).join('') + '</div>');
   out.push('</header>');
 
@@ -2072,12 +2102,14 @@ function buildDossier() {
   out.push('<p class="big">' + esc(O.contactH) + '</p>');
   out.push('<p class="lede" style="font-size:14px;margin-top:18px">' + esc(O.contactNote) + '</p></div>');
   out.push('<div class="ways">' + O.ways.map(function (w) {
-    return '<a href="' + w.href + '"' + (w.href.indexOf('http') === 0 ? ' target="_blank" rel="noopener"' : '') + '>' + esc(w.t) + '</a>';
+    if (w.protect) return '<a href="#" data-p="' + w.protect + '">' + esc(w.t) + '</a>';
+    return '<a href="' + w.href + '" target="_blank" rel="noopener">' + esc(w.t) + '</a>';
   }).join('') + '</div></div>');
   out.push('<div class="colophon">' + O.colophon.map(function (c) { return '<span>' + esc(c) + '</span>'; }).join('') + '</div>');
   out.push('</section>');
 
   host.innerHTML = out.join('');
+  armContacts(host);
 }
 
 /* --------------------------------------------------------------------------
@@ -2137,6 +2169,7 @@ function applyLang(lang) {
   });
 
   buildDossier();
+  armContacts(document);
   var pp = document.getElementById('project');
   if (pp) pp.classList.remove('open');
 
