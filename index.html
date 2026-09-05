@@ -12,9 +12,30 @@
 </head>
 <body>
 
+<div class="boot-screen" id="bootScreen" role="status" aria-live="polite">
+  <div class="boot-lines">
+    <p data-i18n="boot.init">INITIALIZING SYSTEM...</p>
+    <p class="boot-line" data-boot-delay="1"><span data-i18n="boot.network">NETWORK</span> <span class="boot-ok" data-i18n="boot.ok">[OK]</span></p>
+    <p class="boot-line" data-boot-delay="2"><span data-i18n="boot.modules">SECURITY MODULES</span> <span class="boot-ok" data-i18n="boot.ok">[OK]</span></p>
+    <p class="boot-line" data-boot-delay="3"><span data-i18n="boot.monitoring">THREAT MONITORING</span> <span class="boot-active" data-i18n="boot.active">[ACTIVE]</span></p>
+    <p class="boot-line" data-boot-delay="4"><span data-i18n="boot.system">SYSTEM</span> <span class="boot-online" data-i18n="boot.online">[ONLINE]</span></p>
+  </div>
+  <button class="boot-skip" id="bootSkip" type="button" data-i18n="boot.skip">Saltar</button>
+</div>
+
 <canvas id="networkCanvas" class="network-canvas" aria-hidden="true"></canvas>
 
-<div class="scan-bar" id="scanBar" aria-hidden="true"></div>
+<div class="scan-bar" id="scanBar" aria-hidden="true">
+  <span class="scan-bar-label" id="scanBarLabel" aria-hidden="true">0%</span>
+</div>
+
+<div class="status-strip" aria-hidden="true">
+  <span data-i18n="status.online">SYSTEM ONLINE</span>
+  <span class="status-dot">·</span>
+  <span data-i18n="status.monitoring">THREAT MONITORING ACTIVE</span>
+  <span class="status-dot">·</span>
+  <span data-i18n="status.modules">4 SECURITY MODULES ACTIVE</span>
+</div>
 
 <header class="site-header">
   <div class="wrap header-inner">
@@ -39,6 +60,7 @@
   <section class="hero">
     <div class="hero-glow" aria-hidden="true"></div>
     <div class="wrap hero-inner">
+      <p class="zone-kicker reveal-load" data-i18n="zone.core">SYSTEM CORE</p>
       <p class="hero-kicker" data-i18n="hero.kicker">Iván Zubizarreta · Analista de Ciberseguridad</p>
       <h1 class="reveal-load" data-i18n="hero.headline">Seguridad ofensiva con mentalidad de sistemas.</h1>
       <p class="hero-lede reveal-load" data-i18n="hero.lede">Reviso, ataco y refuerzo sistemas e infraestructuras antes de que lo haga otro. Formación progresiva en redes, sistemas y hacking ético, aplicada a problemas reales.</p>
@@ -51,14 +73,17 @@
     <div class="stats-strip">
       <div class="wrap stats-grid">
         <div class="stat">
+          <div class="stat-index">01</div>
           <div class="stat-num">1.700h</div>
           <p data-i18n="stats.hours">Formación especializada en el máster</p>
         </div>
         <div class="stat">
+          <div class="stat-index">02</div>
           <div class="stat-num">3</div>
           <p data-i18n="stats.degrees">Titulaciones en sistemas y ciberseguridad</p>
         </div>
         <div class="stat">
+          <div class="stat-index">03</div>
           <div class="stat-num">IoT</div>
           <p data-i18n="stats.project">Proyecto real de control de acceso</p>
         </div>
@@ -68,9 +93,11 @@
 
   <section id="servicios" class="section">
     <div class="wrap">
+      <p class="zone-kicker reveal" data-i18n="zone.operations">SECURITY OPERATIONS</p>
       <h2 class="reveal" data-i18n="services.title">Qué hago</h2>
       <div class="service-grid reveal-group">
-        <article class="service-card">
+        <article class="service-card security-node" tabindex="0">
+          <div class="node-status"><span class="node-dot" aria-hidden="true"></span><span data-i18n="node.active">ACTIVE</span></div>
           <svg class="service-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M20 4L34 9V19C34 27.5 28 33.5 20 36C12 33.5 6 27.5 6 19V9L20 4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
             <path d="M14 20L18 24L26 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -78,7 +105,8 @@
           <h3 data-i18n="services.s1.title">Pentesting y hacking ético</h3>
           <p data-i18n="services.s1.desc">Pruebas de intrusión controladas para encontrar los huecos antes que un atacante real.</p>
         </article>
-        <article class="service-card">
+        <article class="service-card security-node" tabindex="0">
+          <div class="node-status"><span class="node-dot" aria-hidden="true"></span><span data-i18n="node.active">ACTIVE</span></div>
           <svg class="service-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="17" cy="17" r="10" stroke="currentColor" stroke-width="2"/>
             <path d="M25 25L34 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -86,7 +114,8 @@
           <h3 data-i18n="services.s2.title">Seguridad ofensiva</h3>
           <p data-i18n="services.s2.desc">Simulación de ataques reales para poner a prueba la resistencia de sistemas y redes.</p>
         </article>
-        <article class="service-card">
+        <article class="service-card security-node" tabindex="0">
+          <div class="node-status"><span class="node-dot" aria-hidden="true"></span><span data-i18n="node.active">ACTIVE</span></div>
           <svg class="service-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="7" y="7" width="26" height="26" rx="3" stroke="currentColor" stroke-width="2"/>
             <path d="M14 20H26M20 14V26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -94,7 +123,8 @@
           <h3 data-i18n="services.s3.title">Análisis de vulnerabilidades</h3>
           <p data-i18n="services.s3.desc">Auditoría de sistemas y redes para detectar, priorizar y documentar riesgos.</p>
         </article>
-        <article class="service-card">
+        <article class="service-card security-node" tabindex="0">
+          <div class="node-status"><span class="node-dot" aria-hidden="true"></span><span data-i18n="node.active">ACTIVE</span></div>
           <svg class="service-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M20 5V13M20 27V35M5 20H13M27 20H35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             <circle cx="20" cy="20" r="6" stroke="currentColor" stroke-width="2"/>
@@ -108,6 +138,7 @@
 
   <section id="experiencia" class="section section-alt">
     <div class="wrap">
+      <p class="zone-kicker reveal" data-i18n="zone.history">SYSTEM HISTORY</p>
       <h2 class="reveal" data-i18n="experience.title">Experiencia</h2>
       <ol class="timeline reveal-group">
         <li class="timeline-item">
@@ -140,23 +171,27 @@
 
   <section id="formacion" class="section">
     <div class="wrap">
+      <p class="zone-kicker reveal" data-i18n="zone.knowledge">KNOWLEDGE CORE</p>
       <h2 class="reveal" data-i18n="education.title">Formación</h2>
       <div class="edu-grid reveal-group">
-        <div class="edu-card">
+        <div class="edu-card knowledge-node">
           <div class="edu-year">2026</div>
           <h3 data-i18n="edu.master.title">Máster en Ciberseguridad, Hacking Ético y Seguridad Ofensiva</h3>
           <p class="edu-org">EIP International Business School</p>
           <p class="edu-meta" data-i18n="edu.master.meta">1.700 horas · 68 ECTS</p>
+          <p class="node-status node-status-verified"><span class="node-dot" aria-hidden="true"></span><span data-i18n="node.verified">VERIFIED</span></p>
         </div>
-        <div class="edu-card">
+        <div class="edu-card knowledge-node">
           <div class="edu-year">2025 — <span data-i18n="dates.present">Actualidad</span></div>
           <h3 data-i18n="edu.asir.title">Grado Superior en Administración de Sistemas Informáticos en Red (ASIR)</h3>
           <p class="edu-org">CEAC FP</p>
+          <p class="node-status node-status-active"><span class="node-dot" aria-hidden="true"></span><span data-i18n="node.in_progress">IN PROGRESS</span></p>
         </div>
-        <div class="edu-card">
+        <div class="edu-card knowledge-node">
           <div class="edu-year">2022 — 2024</div>
           <h3 data-i18n="edu.smr.title">Grado Medio en Sistemas Microinformáticos y Redes (SMR)</h3>
           <p class="edu-org">IES Palomeras Vallecas</p>
+          <p class="node-status node-status-verified"><span class="node-dot" aria-hidden="true"></span><span data-i18n="node.verified">VERIFIED</span></p>
         </div>
       </div>
 
@@ -183,6 +218,7 @@
 
   <section id="proyectos" class="section section-alt">
     <div class="wrap">
+      <p class="zone-kicker reveal" data-i18n="zone.lab">SECURITY LAB</p>
       <h2 class="reveal" data-i18n="projects.title">Proyectos</h2>
       <div class="project-grid reveal-group">
         <article class="project-card">
@@ -190,7 +226,7 @@
           <h3 data-i18n="proj1.title">Sistema de Control de Acceso</h3>
           <p class="project-org">Kubernesys</p>
           <p data-i18n="proj1.desc">Diseño e implementación de un sistema de control de acceso, con dispositivo físico y aplicación web de gestión, orientado a seguridad y conectividad remota.</p>
-          <ul class="tag-list tag-list-mono">
+          <ul class="tag-list tag-list-mono node-chain">
             <li>IoT</li>
             <li data-i18n="proj1.tag_security">Seguridad</li>
             <li data-i18n="proj1.tag_web">Desarrollo web</li>
@@ -203,12 +239,14 @@
           <div class="project-year">—</div>
           <h3 data-i18n="proj_placeholder.title">Próximo proyecto</h3>
           <p data-i18n="proj_placeholder.desc">Espacio reservado. Sustituye este bloque por el nombre, la descripción y el enlace al repositorio de tu próximo proyecto.</p>
+          <p class="node-status node-status-unknown"><span class="node-dot" aria-hidden="true"></span><span data-i18n="node.unknown">UNKNOWN NODE</span></p>
         </article>
 
         <article class="project-card project-card-placeholder">
           <div class="project-year">—</div>
           <h3 data-i18n="proj_placeholder.title">Próximo proyecto</h3>
           <p data-i18n="proj_placeholder.desc">Espacio reservado. Sustituye este bloque por el nombre, la descripción y el enlace al repositorio de tu próximo proyecto.</p>
+          <p class="node-status node-status-unknown"><span class="node-dot" aria-hidden="true"></span><span data-i18n="node.coming_soon">COMING SOON</span></p>
         </article>
       </div>
     </div>
@@ -216,6 +254,7 @@
 
   <section class="cta-band">
     <div class="wrap cta-inner reveal">
+      <p class="cta-foundation" data-i18n="cta.foundation1" data-i18n-html>SECURITY IS NOT A FEATURE.<br>IT'S THE FOUNDATION.</p>
       <h2 data-i18n="cta.title">¿Hablamos de tu próximo proyecto?</h2>
       <p data-i18n="cta.lede">Disponible para colaborar en pentesting, auditorías de seguridad o proyectos de sistemas.</p>
       <a href="#contacto" class="btn btn-invert" data-i18n="cta.button">Contactar ahora</a>
@@ -224,12 +263,13 @@
 
   <section id="contacto" class="section">
     <div class="wrap section-narrow">
+      <p class="zone-kicker reveal" data-i18n="zone.channel">SECURE CHANNEL</p>
       <h2 data-i18n="contact.title">Contacto</h2>
       <p data-i18n="contact.lede">¿Hablamos de una oportunidad o de un proyecto? Escríbeme por cualquiera de estos medios.</p>
       <ul class="contact-list">
-        <li><a href="mailto:iazv.ivan@gmail.com">iazv.ivan@gmail.com</a></li>
-        <li><a href="https://linkedin.com/in/i-zubizarreta" target="_blank" rel="noopener">linkedin.com/in/i-zubizarreta</a></li>
-        <li><a href="https://ivanzubizarretavazquez.github.io" target="_blank" rel="noopener">ivanzubizarretavazquez.github.io</a></li>
+        <li><span class="contact-label">EMAIL</span><a href="mailto:iazv.ivan@gmail.com">iazv.ivan@gmail.com</a></li>
+        <li><span class="contact-label">LINKEDIN</span><a href="https://linkedin.com/in/i-zubizarreta" target="_blank" rel="noopener">linkedin.com/in/i-zubizarreta</a></li>
+        <li><span class="contact-label">GITHUB</span><a href="https://ivanzubizarretavazquez.github.io" target="_blank" rel="noopener">ivanzubizarretavazquez.github.io</a></li>
       </ul>
     </div>
   </section>
