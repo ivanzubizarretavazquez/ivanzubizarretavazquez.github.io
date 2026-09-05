@@ -1,5 +1,34 @@
 const translations = {
   es: {
+    "zone.core": "SYSTEM CORE",
+    "zone.operations": "SECURITY OPERATIONS",
+    "zone.history": "SYSTEM HISTORY",
+    "zone.knowledge": "KNOWLEDGE CORE",
+    "zone.lab": "SECURITY LAB",
+    "zone.channel": "SECURE CHANNEL",
+
+    "node.active": "ACTIVA",
+    "node.verified": "VERIFICADO",
+    "node.in_progress": "EN CURSO",
+    "node.unknown": "NODO DESCONOCIDO",
+    "node.coming_soon": "PRÓXIMAMENTE",
+
+    "boot.init": "INICIALIZANDO SISTEMA...",
+    "boot.network": "RED",
+    "boot.modules": "MÓDULOS DE SEGURIDAD",
+    "boot.monitoring": "MONITORIZACIÓN DE AMENAZAS",
+    "boot.system": "SISTEMA",
+    "boot.ok": "[OK]",
+    "boot.active": "[ACTIVO]",
+    "boot.online": "[EN LÍNEA]",
+    "boot.skip": "Saltar",
+
+    "status.online": "SISTEMA EN LÍNEA",
+    "status.monitoring": "MONITORIZACIÓN DE AMENAZAS ACTIVA",
+    "status.modules": "4 MÓDULOS DE SEGURIDAD ACTIVOS",
+
+    "cta.foundation1": "LA SEGURIDAD NO ES UNA FUNCIÓN.<br>ES LA BASE.",
+
     "nav.services": "Qué hago",
     "nav.experience": "Experiencia",
     "nav.education": "Formación",
@@ -74,6 +103,35 @@ const translations = {
   },
 
   en: {
+    "zone.core": "SYSTEM CORE",
+    "zone.operations": "SECURITY OPERATIONS",
+    "zone.history": "SYSTEM HISTORY",
+    "zone.knowledge": "KNOWLEDGE CORE",
+    "zone.lab": "SECURITY LAB",
+    "zone.channel": "SECURE CHANNEL",
+
+    "node.active": "ACTIVE",
+    "node.verified": "VERIFIED",
+    "node.in_progress": "IN PROGRESS",
+    "node.unknown": "UNKNOWN NODE",
+    "node.coming_soon": "COMING SOON",
+
+    "boot.init": "INITIALIZING SYSTEM...",
+    "boot.network": "NETWORK",
+    "boot.modules": "SECURITY MODULES",
+    "boot.monitoring": "THREAT MONITORING",
+    "boot.system": "SYSTEM",
+    "boot.ok": "[OK]",
+    "boot.active": "[ACTIVE]",
+    "boot.online": "[ONLINE]",
+    "boot.skip": "Skip",
+
+    "status.online": "SYSTEM ONLINE",
+    "status.monitoring": "THREAT MONITORING ACTIVE",
+    "status.modules": "4 SECURITY MODULES ACTIVE",
+
+    "cta.foundation1": "SECURITY IS NOT A FEATURE.<br>IT'S THE FOUNDATION.",
+
     "nav.services": "What I do",
     "nav.experience": "Experience",
     "nav.education": "Education",
@@ -153,7 +211,11 @@ function applyLanguage(lang) {
     const key = el.getAttribute("data-i18n");
     const value = translations[lang][key];
     if (value !== undefined) {
-      el.textContent = value;
+      if (el.hasAttribute("data-i18n-html")) {
+        el.innerHTML = value;
+      } else {
+        el.textContent = value;
+      }
     }
   });
 
@@ -168,6 +230,7 @@ function applyLanguage(lang) {
 
 function setupScanBar() {
   const bar = document.getElementById("scanBar");
+  const label = document.getElementById("scanBarLabel");
   let ticking = false;
 
   function update() {
@@ -175,6 +238,7 @@ function setupScanBar() {
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
     bar.style.width = pct + "%";
+    if (label) label.textContent = Math.round(pct) + "%";
 
     // Fase 2 — CameraController: el mismo progreso que llena la barra
     // pilota el recorrido de la cámara por el universo 3D.
@@ -231,7 +295,55 @@ document.addEventListener("DOMContentLoaded", () => {
   setupScanBar();
   setupReveals();
   setupNetworkBackground();
+  setupBootScreen();
 });
+
+function setupBootScreen() {
+  // Entrada rápida y saltable: nunca debe hacer esperar al usuario, y
+  // respeta prefers-reduced-motion desapareciendo al instante.
+  const screen = document.getElementById("bootScreen");
+  if (!screen) return;
+
+  const reducedMotion =
+    window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function finish() {
+    screen.classList.add("is-done");
+    window.setTimeout(() => {
+      screen.setAttribute("hidden", "");
+    }, 400);
+  }
+
+  if (reducedMotion) {
+    finish();
+    return;
+  }
+
+  const lines = screen.querySelectorAll("[data-boot-delay]");
+  lines.forEach((line) => {
+    const delay = Number(line.getAttribute("data-boot-delay")) * 220;
+    window.setTimeout(() => line.classList.add("is-visible"), delay);
+  });
+
+  const totalDelay = (lines.length + 1) * 220 + 260;
+  const autoTimer = window.setTimeout(finish, totalDelay);
+
+  const skipBtn = document.getElementById("bootSkip");
+  if (skipBtn) {
+    skipBtn.addEventListener("click", () => {
+      window.clearTimeout(autoTimer);
+      finish();
+    });
+  }
+
+  // Any key or click also skips it — this is a portfolio, not a gate.
+  function skipOnce() {
+    window.clearTimeout(autoTimer);
+    finish();
+    document.removeEventListener("keydown", skipOnce);
+  }
+  document.addEventListener("keydown", skipOnce, { once: true });
+}
 
 function setupNetworkBackground() {
   // Fase 1: universo 3D ambiental. Si Three.js no cargó (bloqueado, sin
@@ -239,6 +351,15 @@ function setupNetworkBackground() {
   // que antes: el canvas queda vacío y transparente.
   const canvas = document.getElementById("networkCanvas");
   if (!canvas) return;
+
+  // Fase 9/10 — Responsive/performance: en pantallas muy pequeñas el
+  // universo 3D se retira por completo (coincide con el breakpoint de
+  // style.css) para no gastar batería/CPU en un elemento puramente
+  // ambiental que ahí apenas se ve.
+  if (window.innerWidth <= 480) {
+    canvas.style.display = "none";
+    return;
+  }
 
   if (typeof THREE === "undefined" || !window.NetworkBackground) {
     canvas.style.display = "none";
