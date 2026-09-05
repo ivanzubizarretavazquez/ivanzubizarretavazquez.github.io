@@ -1,0 +1,161 @@
+const translations = {
+  es: {
+    "nav.profile": "Perfil",
+    "nav.experience": "Experiencia",
+    "nav.education": "Formación",
+    "nav.projects": "Proyectos",
+    "nav.contact": "Contacto",
+
+    "hero.role": "Analista de Ciberseguridad — Seguridad ofensiva y hacking ético",
+    "hero.lede": "Técnico de sistemas y ciberseguridad con una base formativa sólida y en constante ampliación, con dominio progresivo de sistemas, redes y seguridad tanto ofensiva como defensiva.",
+    "hero.cta_projects": "Ver proyectos",
+    "hero.cta_contact": "Contactar",
+
+    "status.location_key": "Ubicación",
+    "status.focus_key": "Enfoque",
+    "status.languages_key": "Idiomas",
+    "status.languages_val": "Español (nativo) · Inglés (B2)",
+    "status.availability_key": "Disponibilidad",
+    "status.availability_val": "Abierto a nuevas oportunidades",
+
+    "profile.title": "Perfil",
+    "profile.body": "Mi recorrido —del Grado Medio en Sistemas Microinformáticos y Redes (SMR) al Grado Superior en Administración de Sistemas Informáticos en Red (ASIR) y un Máster en Ciberseguridad, Hacking Ético y Seguridad Ofensiva— me ha dado un dominio progresivo de sistemas, redes y seguridad tanto ofensiva como defensiva. Cada titulación ha reforzado mi capacidad de análisis, mi autonomía técnica y una forma estructurada de resolver problemas. Aprendo rápido y disfruto aplicando lo aprendido para proteger sistemas e infraestructuras.",
+
+    "experience.title": "Experiencia",
+    "dates.present": "Actualidad",
+    "exp.job1.role": "Responsable de Caja",
+    "exp.job1.desc": "Gestión de la caja y control de las operaciones diarias, incluyendo arqueos y cierre, garantizando la exactitud financiera en uno de los restaurantes y tablaos flamencos más reconocidos internacionalmente.",
+    "exp.job2.role": "Encargado de Establecimiento",
+    "exp.job2.org": "Sector restauración",
+    "exp.job2.desc": "Supervisión y coordinación de las operaciones diarias del local: gestión y formación del equipo, planificación de turnos, control de stock y pedidos, apertura y cierre de caja, y garantía de la calidad del servicio.",
+    "exp.job3.role": "Sistema de Control de Acceso",
+    "exp.job3.desc": "Diseño e implementación de un sistema de control de acceso, incluyendo el dispositivo físico y la aplicación web de gestión, con enfoque en seguridad y conectividad remota.",
+
+    "education.title": "Formación",
+    "edu.master.title": "Máster en Ciberseguridad, Hacking Ético y Seguridad Ofensiva",
+    "edu.master.meta": "1.700 horas · 68 ECTS",
+    "edu.asir.title": "Grado Superior en Administración de Sistemas Informáticos en Red (ASIR)",
+    "edu.smr.title": "Grado Medio en Sistemas Microinformáticos y Redes (SMR)",
+
+    "skills.technical_title": "Aptitudes técnicas",
+    "skills.t1": "Hacking ético y pentesting",
+    "skills.t2": "Seguridad ofensiva",
+    "skills.t3": "Análisis de vulnerabilidades",
+    "skills.t4": "Redes y sistemas (Linux/Windows)",
+    "skills.t5": "Administración de sistemas",
+    "skills.t6": "Respuesta a incidentes (Blue Team)",
+    "skills.management_title": "Gestión",
+    "skills.m1": "Liderazgo de equipos",
+    "skills.m2": "Gestión de operaciones",
+    "skills.m3": "Atención al cliente",
+    "skills.m4": "Aprendizaje rápido",
+
+    "projects.title": "Proyectos",
+    "proj1.title": "Sistema de Control de Acceso",
+    "proj1.desc": "Diseño e implementación de un sistema de control de acceso, con dispositivo físico y aplicación web de gestión, orientado a seguridad y conectividad remota.",
+    "proj1.tag_security": "Seguridad",
+    "proj1.tag_web": "Desarrollo web",
+    "proj1.tag_remote": "Conectividad remota",
+    "proj1.note": "Repositorio próximamente",
+    "proj_placeholder.title": "Próximo proyecto",
+    "proj_placeholder.desc": "Espacio reservado. Sustituye este bloque por el nombre, la descripción y el enlace al repositorio de tu próximo proyecto.",
+
+    "contact.title": "Contacto",
+    "contact.lede": "¿Hablamos de una oportunidad o de un proyecto? Escríbeme por cualquiera de estos medios."
+  },
+
+  en: {
+    "nav.profile": "Profile",
+    "nav.experience": "Experience",
+    "nav.education": "Education",
+    "nav.projects": "Projects",
+    "nav.contact": "Contact",
+
+    "hero.role": "Cybersecurity Analyst — Offensive security and ethical hacking",
+    "hero.lede": "Systems and cybersecurity technician with a solid and continuously growing academic background, with a progressive command of systems, networks and both offensive and defensive security.",
+    "hero.cta_projects": "View projects",
+    "hero.cta_contact": "Get in touch",
+
+    "status.location_key": "Location",
+    "status.focus_key": "Focus",
+    "status.languages_key": "Languages",
+    "status.languages_val": "Spanish (native) · English (B2)",
+    "status.availability_key": "Availability",
+    "status.availability_val": "Open to new opportunities",
+
+    "profile.title": "Profile",
+    "profile.body": "My path —from an Intermediate Vocational Diploma in Microcomputer Systems and Networks (SMR) to a Higher Vocational Diploma in Network Systems Administration (ASIR) and a Master's in Cybersecurity, Ethical Hacking and Offensive Security— has given me a progressive command of systems, networks and both offensive and defensive security. Each qualification has strengthened my analytical thinking, technical autonomy and a structured approach to problem-solving. I learn fast and enjoy applying what I learn to protect systems and infrastructures.",
+
+    "experience.title": "Experience",
+    "dates.present": "Present",
+    "exp.job1.role": "Head Cashier",
+    "exp.job1.desc": "Management of the cash desk and control of daily operations, including cash counts and closing, ensuring financial accuracy at one of the most internationally renowned flamenco restaurants and tablaos.",
+    "exp.job2.role": "Venue Manager",
+    "exp.job2.org": "Hospitality sector",
+    "exp.job2.desc": "Supervision and coordination of the venue's daily operations: team management and training, shift planning, stock and order control, cash opening and closing, and ensuring service quality.",
+    "exp.job3.role": "Access Control System",
+    "exp.job3.desc": "Design and implementation of an access control system, covering both the physical device and the web management application, with a focus on security and remote connectivity.",
+
+    "education.title": "Education",
+    "edu.master.title": "Master's in Cybersecurity, Ethical Hacking and Offensive Security",
+    "edu.master.meta": "1,700 hours · 68 ECTS",
+    "edu.asir.title": "Higher Vocational Diploma in Network Systems Administration (ASIR)",
+    "edu.smr.title": "Intermediate Vocational Diploma in Microcomputer Systems and Networks (SMR)",
+
+    "skills.technical_title": "Technical skills",
+    "skills.t1": "Ethical hacking & pentesting",
+    "skills.t2": "Offensive security",
+    "skills.t3": "Vulnerability assessment",
+    "skills.t4": "Networks & systems (Linux/Windows)",
+    "skills.t5": "Systems administration",
+    "skills.t6": "Incident response (Blue Team)",
+    "skills.management_title": "Management",
+    "skills.m1": "Team leadership",
+    "skills.m2": "Operations management",
+    "skills.m3": "Customer service",
+    "skills.m4": "Fast learner",
+
+    "projects.title": "Projects",
+    "proj1.title": "Access Control System",
+    "proj1.desc": "Design and implementation of an access control system, with a physical device and a web management application, focused on security and remote connectivity.",
+    "proj1.tag_security": "Security",
+    "proj1.tag_web": "Web development",
+    "proj1.tag_remote": "Remote connectivity",
+    "proj1.note": "Repository coming soon",
+    "proj_placeholder.title": "Upcoming project",
+    "proj_placeholder.desc": "Reserved space. Replace this block with the name, description and repository link of your next project.",
+
+    "contact.title": "Contact",
+    "contact.lede": "Want to talk about an opportunity or a project? Reach me through any of these channels."
+  }
+};
+
+function applyLanguage(lang) {
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.getAttribute("data-i18n");
+    const value = translations[lang][key];
+    if (value !== undefined) {
+      el.textContent = value;
+    }
+  });
+
+  document.documentElement.setAttribute("lang", lang);
+
+  document.querySelectorAll("[data-lang-label]").forEach((el) => {
+    el.classList.toggle("is-active", el.getAttribute("data-lang-label") === lang);
+  });
+
+  localStorage.setItem("iz-portfolio-lang", lang);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const stored = localStorage.getItem("iz-portfolio-lang");
+  const initialLang = stored === "en" ? "en" : "es";
+  applyLanguage(initialLang);
+
+  const toggle = document.getElementById("langToggle");
+  toggle.addEventListener("click", () => {
+    const current = document.documentElement.getAttribute("lang") === "en" ? "en" : "es";
+    applyLanguage(current === "es" ? "en" : "es");
+  });
+});
